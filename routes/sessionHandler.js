@@ -9,19 +9,19 @@ function session(app){
     app.post("/compare/users", (req, res) => {
         var {username, password} = req.body;
 
-        db.USER.findAll({})
+        db.people.findAll({})
         .then((data) => {
             
             var userID = data.find((x) => {
                 // Uname and Upassword might be changed due to table structure
-                if (username == x.Uname && password == x.Upassword){
+                if (username == x.usernameX && password == x.password1X){
                     return x
                 }
             });
             
             if (userID){
                 // Uid might be changed due to table structure && only giving user id so the password isnt send
-                req.session.user = user.Uid;
+                req.session.user = userID.id;
                 // "/" might be where the user is authenticated and see their info
                 return res.redirect("/");
             } else {
@@ -45,7 +45,7 @@ function session(app){
                     req.flash('err', 'Invalid Email');
                     return res.redirect("/register");
                 } else {
-                    db.USER.create({
+                    db.people.create({
                         nameX: name,
                         usernameX: username,
                         emailX: email,
