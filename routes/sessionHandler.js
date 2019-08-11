@@ -65,6 +65,61 @@ function session(app){
             return res.redirect("/register");
         }
     })
+
+    // since the session holds the user id we will send that unique number to recieve it back to send the proper information
+    app.get("/get/user", (req, res) => {
+        return res.json(req.session.user)
+    })
+
+    // after the browser gets the user id from up there a another function will be called to get the rest of the information
+    app.get('/user/info/:id', (req, res) => {
+        var id = req.params.id;
+        // making sure that session id matches the information we will be sending back
+        if (id == req.session.user){
+            db.findOne({
+                where: {
+                    Uid: id
+                }
+            })
+            .then((data) => {
+                var send = {name: data[0].Uname};
+                console.log(send)
+                return res.json(send);
+            })
+        } else {
+            // for a weird situation that they do not match or someone is trying to use this url as an api it wont work
+            req.session.destroy((err) => {
+                if (err){
+                    // maybe a flash err could be here
+                    return res.redirect("/");
+                } else {
+                    return res.redirect("/login");
+                }
+            })
+        }
+    })
+
+    // destroying the session when the user logs out
+    app.post("/logout/user", (req, res) => {
+        req.session.destroy((err) => {
+            if (err){
+                return res.redirect("/");
+            } else {
+                return res.redirect("/login");
+            }
+        })
+    })
+
+    // for displaying any errors when creating a account
+    app.get("/check/errors", (req, res) => {
+        res.send(req.flash("err"));
+    })
+
+    // for displaying any errors when a user trying to login
+    app.get("/login/errors", (req, res) => {
+        res.send(req.flash("err2"));
+    })
+
 }
 
 module.exports = session;
