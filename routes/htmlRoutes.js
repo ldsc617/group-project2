@@ -22,7 +22,7 @@ module.exports = function(app) {
     });
   });
 
-  // testing stuff 
+  // testing stuff ----------------------------------------------------------------------------------------
 
   app.get("/register", (req, res) => {
     res.render("create")
@@ -32,10 +32,11 @@ module.exports = function(app) {
     res.render("login")
   })
 
-  // finished testing
+  // finished testing ----------------------------------------------------------------------------------------
 
   // Render 404 page for any unmatched routes
   // app.get("*", function(req, res) {
   //   res.render("404");
   // });
+  
 };
