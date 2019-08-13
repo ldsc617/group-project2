@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     password1X: DataTypes.STRING
   });
 
-  people.hasMany(post)
+  // people.hasMany(post)
 
   return people;
 };
