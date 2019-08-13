@@ -10,7 +10,7 @@ module.exports = function(app) {
   // Example is a var found in example.js I believe this provides the sequlized database data??
   // Still not sure where msg: "welcome!" come into play
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.people.findAll({}).then(function(dbExamples) {
       res.render("index", {
         msg: "Welcome!",
         // examples is the handlebar variable name for our database dbExamples
@@ -28,7 +28,7 @@ module.exports = function(app) {
   // Ex: app load example handlebar page with the database information at this: id
   // once information at db id is found and loaded(.then) render and display the example.handlebar page
   app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(
+    db.people.findOne({ where: { id: req.params.id } }).then(function(
       dbExample
     ) {
       res.render("example", {
@@ -36,6 +36,7 @@ module.exports = function(app) {
       });
     });
   });
+
 
   // blog = name of handlebar rendering page
   // Post = the name of the var in the sequelize example in the example.js file in models file
@@ -70,8 +71,22 @@ module.exports = function(app) {
   //
   //
 
+  // testing stuff ----------------------------------------------------------------------------------------
+
+  app.get("/register", (req, res) => {
+    res.render("create")
+  })
+
+  app.get("/login", (req, res) => {
+    res.render("login")
+  })
+
+  // finished testing ----------------------------------------------------------------------------------------
+
+
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
-  });
+  // app.get("*", function(req, res) {
+  //   res.render("404");
+  // });
+  
 };
