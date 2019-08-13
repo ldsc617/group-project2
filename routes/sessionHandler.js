@@ -34,9 +34,9 @@ function session(app){
 
     // new user making a account
     app.post("/create/account", (req, res) => { 
-        var { name, username, email, password1, password2 } = req.body;
+        var { name, username, password1, password2 } = req.body;
         // were all the inputs entered
-        if (name, username, email, password1, password2){
+        if (name, username, password1, password2){
             // do both paswords match 
             if ( password1 == password2 ){
                 // const errors = validationResult(req);
@@ -48,7 +48,6 @@ function session(app){
                     db.people.create({
                         nameX: name,
                         usernameX: username,
-                        emailX: email,
                         password1X: password1
                     })
                     .then((data) => {
