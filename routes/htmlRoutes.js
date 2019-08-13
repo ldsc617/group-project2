@@ -4,6 +4,7 @@
 
 //path exits in models can I use it here?
 var db = require("../models");
+var path = require("path")
 
 module.exports = function(app) {
   // at route / get and render index.handlebars page

@@ -1,6 +1,6 @@
 require("dotenv").config();
 var express = require("express");
-var exphbs = require("express-handlebars");
+// var exphbs = require("express-handlebars");
 var session = require("express-session");
 var flash = require("connect-flash");
 
@@ -15,26 +15,26 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // for express to use session
-app.use(session(
-  {
-    name: "sessionName",
-    secret: "thisMightHaveToBeInTheDotenvPlace",
-    resave: false,
-    saveUninitialized: false
-  }
-))
+app.use(
+  session({
+  name: "sessionName",
+  secret: "thisMightHaveToBeInTheDotenvPlace",
+  resave: false,
+  saveUninitialized: false
+  })
+)
 
 // for flashing messages
 app.use(flash());
 
 // Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
-app.set("view engine", "handlebars");
+// app.engine(
+//   "handlebars",
+//   exphbs({
+//     defaultLayout: "main"
+//   })
+// );
+// app.set("view engine", "handlebars");
 
 // Routes
 require("./routes/apiRoutes")(app);
