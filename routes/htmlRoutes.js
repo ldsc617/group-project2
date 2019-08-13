@@ -10,6 +10,9 @@ module.exports = function(app) {
   // Example is a var found in example.js I believe this provides the sequlized database data??
   // Still not sure where msg: "welcome!" come into play
   app.get("/", function(req, res) {
+    if (!req.session.userID){
+      return res.redirect("/login")
+    }
     db.people.findAll({}).then(function(dbExamples) {
       res.render("index", {
         msg: "Welcome!",
@@ -74,10 +77,16 @@ module.exports = function(app) {
   // testing stuff ----------------------------------------------------------------------------------------
 
   app.get("/register", (req, res) => {
+    if (req.session.userID){
+      return res.redirect("/")
+    }
     res.render("create")
   })
 
   app.get("/login", (req, res) => {
+    if (req.session.userID){
+      return res.redirect("/")
+    }
     res.render("login")
   })
 

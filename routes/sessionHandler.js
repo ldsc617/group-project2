@@ -33,29 +33,28 @@ function session(app){
     })
 
     // new user making a account
-    app.post("/create/account", [check("email").isEmail()], (req, res) => { 
-        var { name, username, email, password1, password2 } = req.body;
+    app.post("/create/account", (req, res) => { 
+        var { name, username, password1, password2 } = req.body;
         // were all the inputs entered
-        if (name, username, email, password1, password2){
+        if (name, username, password1, password2){
             // do both paswords match 
             if ( password1 == password2 ){
-                const errors = validationResult(req);
+                // const errors = validationResult(req);
                 // does the email entered pass the express-validor email check
-                if (!errors.isEmpty()){
-                    req.flash('err', 'Invalid Email');
-                    return res.redirect("/register");
-                } else {
+                // if (!errors.isEmpty()){
+                    // req.flash('err', 'Invalid Email');
+                    // return res.redirect("/register");
+                // } else {
                     db.people.create({
                         nameX: name,
                         usernameX: username,
-                        emailX: email,
                         password1X: password1
                     })
                     .then((data) => {
                         console.log(data + " added")
                         return res.redirect("/login")
                     })
-                }
+                // }
             } else {
                 req.flash('err', 'Passwords do not match');
                 return res.redirect("/register");
