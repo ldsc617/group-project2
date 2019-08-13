@@ -12,4 +12,3 @@ module.exports = function(sequelize, DataTypes) {
 // usernameX: username,
 // emailX: email,
 // password1X: password1
-
