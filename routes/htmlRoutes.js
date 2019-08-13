@@ -8,7 +8,7 @@ var db = require("../models");
 module.exports = function(app) {
   // at route / get and render index.handlebars page
   // Example is a var found in example.js I believe this provides the sequlized database data??
-  // Still not sure where msg: "welcome come into play"
+  // Still not sure where msg: "welcome!" come into play
   app.get("/", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.render("index", {
