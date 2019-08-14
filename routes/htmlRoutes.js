@@ -4,7 +4,7 @@
 
 //path exits in models can I use it here?
 var db = require("../models");
-var path = require("path")
+var path = require("path");
 
 module.exports = function(app) {
   // at route / get and render index.handlebars page
@@ -35,9 +35,7 @@ module.exports = function(app) {
     db.people.findOne({ where: { id: req.params.id } }).then(function(
       dbExample
     ) {
-      res.render("example", {
-        example: dbExample
-      });
+      res.sendFile(path.join(__dirname, "../public/example.html"))
     });
   });
 
@@ -81,14 +79,14 @@ module.exports = function(app) {
     if (req.session.userID){
       return res.redirect("/")
     }
-    res.render("create")
+    res.sendFile(path.join(__dirname, "../public/create.html")) //("create")
   })
 
   app.get("/login", (req, res) => {
     if (req.session.userID){
       return res.redirect("/")
     }
-    res.render("login")
+    res.sendFile(path.join(__dirname, "../public/login.html")) //("login")
   })
 
   // finished testing ----------------------------------------------------------------------------------------
