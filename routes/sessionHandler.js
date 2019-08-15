@@ -1,3 +1,6 @@
+//Think of this as a log in home page
+// this page handles checking the user's name with their password and then routes them to the main index page 
+
 var db = require("../models");
 
 // to validtate information the user sends us
@@ -70,8 +73,9 @@ function session(app){
         return res.json(req.session.user)
     })
 
-    // after the browser gets the user id from up there a another function will be called to get the rest of the information
-    app.get('/user/info/:id', (req, res) => {
+    // after the browser confims the id and password display the hom post pade with the data below
+    // look up what => is a replacement for function()
+    app.get('/user/:id', (req, res) =>{
         var id = req.params.id;
         // making sure that session id matches the information we will be sending back
         if (id == req.session.user){
@@ -79,13 +83,11 @@ function session(app){
                 where: {
                     Uid: id
                 }
-            })
-            .then((data) => {
+            }).then((data) => {
                 var send = {name: data[0].Uname};
                 console.log(send)
                 return res.json(send);
-            })
-        } else {
+            })} else {
             // for a weird situation that they do not match or someone is trying to use this url as an api it wont work
             req.session.destroy((err) => {
                 if (err){
