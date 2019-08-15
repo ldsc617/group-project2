@@ -9,9 +9,11 @@ var path = require("path");
 module.exports = function(app) {
   // at route / get and render index.handlebars page
   // Example is a var found in example.js I believe this provides the sequlized database data??
+
   // Still not sure where msg: "welcome come into play"
 
   
+
   app.get("/", function(req, res) {
     if (!req.session.userID){
       return res.redirect("/login")
