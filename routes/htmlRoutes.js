@@ -11,16 +11,18 @@ module.exports = function(app) {
   // Example is a var found in example.js I believe this provides the sequlized database data??
   // Still not sure where msg: "welcome come into play"
   app.get("/", function(req, res) {
+    console.log(req.session.userID)
     if (!req.session.userID){
       return res.redirect("/login")
-    }
-    db.people.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        // examples is the handlebar variable name for our database dbExamples
-        examples: dbExamples
+    } else {
+      db.people.findAll({}).then(function(dbExamples) {
+        res.render("index", {
+          msg: "Welcome!",
+          // examples is the handlebar variable name for our database dbExamples
+          examples: dbExamples
+        });
       });
-    });
+    }
   });
   //Do we need similar app.get requests for each of the handlebar or html pages?
   // Ex: one for homepage/index, a second for a all posts page,
