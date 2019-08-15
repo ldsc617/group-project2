@@ -12,17 +12,21 @@ var PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static("public"));
+// app.use(express.static("public"));
+
+// app.get('style.css', (req, res) => {
+//   res.sendFile(path.join(__dirname, "public/styles/style.css"))
+// })
 
 // for express to use session
 app.use(
   session({
-  name: "sessionName",
-  secret: "thisMightHaveToBeInTheDotenvPlace",
-  resave: false,
-  saveUninitialized: false
+    name: "sessionName",
+    secret: "thisMightHaveToBeInTheDotenvPlace",
+    resave: false,
+    saveUninitialized: false
   })
-)
+);
 
 // for flashing messages
 app.use(flash());
