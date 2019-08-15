@@ -1,7 +1,8 @@
 var db = require("../models");
+// const bcrypt = require('bcrypt');
 
 // to validtate information the user sends us
-const { check, validationResult } = require('express-validator');
+// const { check, validationResult } = require('express-validator');
 
 function session(app){
 
@@ -18,10 +19,12 @@ function session(app){
                     return x
                 }
             });
-            
+            console.log("---------------")
+            console.log(userID.dataValues.id)
+            console.log("---------------")
             if (userID){
                 // Uid might be changed due to table structure && only giving user id so the password isnt send
-                req.session.user = userID.id;
+                req.session.user = userID.dataValues.id;
                 // "/" might be where the user is authenticated and see their info
                 return res.redirect("/");
             } else {
