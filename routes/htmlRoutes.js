@@ -18,8 +18,8 @@ module.exports = function(app) {
     if (!req.session.user){
       return res.redirect("/login")
     } else {
-      db.people.findAll({}).then(function(dbExamples) {
-        res.sendFile(path.join(__dirname, "../public/example.html"))
+      db.Users.findAll({}).then(function(dbExamples) {
+        res.sendFile(path.join(__dirname, "../public/index.html"))
       });
     }
   });

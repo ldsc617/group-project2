@@ -23,8 +23,6 @@ function session(app) {
                     }
                 });
 
-                console.log(userID);
-
                 if (userID) {
                     console.log("---------------")
                     console.log(userID.dataValues.id)
@@ -82,15 +80,16 @@ function session(app) {
     // after the browser confims the id and password display the hom post pade with the data below
     // look up what => is a replacement for function()
     app.get('/user/:id', (req, res) => {
-        var id = req.params.id;
+        var idd = req.params.id;
         // making sure that session id matches the information we will be sending back
-        if (id == req.session.user) {
-            db.findOne({
+        if (idd == req.session.user) {
+            db.Users.findOne({
                 where: {
-                    Uid: id
+                    id: idd
                 }
             }).then((data) => {
-                var send = { name: data[0].Uname };
+                console.log(data.dataValues)
+                var send = { name: data.dataValues.nameX };
                 console.log(send)
                 return res.json(send);
             })
