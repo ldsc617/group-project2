@@ -15,7 +15,7 @@ module.exports = function(app) {
   
 
   app.get("/", function(req, res) {
-    if (!req.session.userID){
+    if (!req.session.user){
       return res.redirect("/login")
     } else {
       db.people.findAll({}).then(function(dbExamples) {
@@ -81,14 +81,14 @@ module.exports = function(app) {
   // testing stuff ----------------------------------------------------------------------------------------
 
   app.get("/register", (req, res) => {
-    if (req.session.userID){
+    if (req.session.user){
       return res.redirect("/")
     }
     res.sendFile(path.join(__dirname, "../public/create.html")) //("create")
   })
 
   app.get("/login", (req, res) => {
-    if (req.session.userID){
+    if (req.session.user){
       return res.redirect("/")
     }
     res.sendFile(path.join(__dirname, "../public/login.html")) //("login")
