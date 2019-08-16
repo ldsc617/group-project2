@@ -18,11 +18,18 @@ module.exports = function(app) {
     if (!req.session.user){
       return res.redirect("/login")
     } else {
-      db.people.findAll({}).then(function(dbExamples) {
-        res.sendFile(path.join(__dirname, "../public/example.html"))
+      db.Users.findAll({}).then(function(dbExamples) {
+        res.sendFile(path.join(__dirname, "../public/index.html"))
       });
     }
   });
+
+  app.get("/dash", (req, res) => {
+    if (!req.session.user){
+      return res.redirect("/login")
+    }
+    res.sendFile(path.join(__dirname, "../public/question.html")) //("create")
+  })
   
   
   //Do we need similar app.get requests for each of the handlebar or html pages?

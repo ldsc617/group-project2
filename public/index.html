@@ -5,15 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 </head>
 <body>
     <p>this will be the login dashboard thing</p>
 
     <p>Ask a question!</p>
 
+    <a href="/dash">See other questions</a><br><br>
+
     <input type="text" id="question">
 
-    <button id="sendQuestion">Submit Question</button>
+    <button id="sendQuestion">Submit Question</button><br><br>
+
+    <section id="display">
+
+    </section>
+
+    <button id="logout">Logout</button>
     
+<script>
+    
+    var toPost = -1;
+
+    $.get("/get/user", (res) => {
+        toPost = res
+        next(res);
+    })
+
+    function next(id){
+        $.get(`/api/User/${id}`, (res) => {
+            console.log(res)
+            for ( let k in res ){
+                var p = $("<p>").text(res[k].question)
+                $("#display").append(p);
+            }
+        })
+    }
+
+    $("#sendQuestion").on("click", () => {
+        console.log(toPost)
+        var send = {
+            question: $("#question").val(),
+            UserID: toPost
+        }
+
+        $.post("/api/post", send, (r) => {
+            console.log(r)
+        })
+    })
+
+    $("#logout").on("click", () => {
+        $.post("/logout/user", () => {
+            window.location.href = "/login"
+        })
+    })
+
+</script>
 </body>
 </html>

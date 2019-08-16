@@ -5,8 +5,15 @@ module.exports = function(sequelize, DataTypes) {
     password1X: DataTypes.STRING
   });
 
+  Users.associate = (models) => {
+    Users.hasMany(models.posts, {
+      onDelete: "cascade"
+    });
+  };
+
   return Users;
 };
+
 //below is a posible example to allow deletion? this would be inserted before return people;
 //~~~~~~
 // people.associate = function(models) {

@@ -23,8 +23,6 @@ function session(app) {
                     }
                 });
 
-                console.log(userID);
-
                 if (userID) {
                     console.log("---------------")
                     console.log(userID.dataValues.id)
@@ -81,31 +79,32 @@ function session(app) {
 
     // after the browser confims the id and password display the hom post pade with the data below
     // look up what => is a replacement for function()
-    app.get('/user/:id', (req, res) => {
-        var id = req.params.id;
-        // making sure that session id matches the information we will be sending back
-        if (id == req.session.user) {
-            db.findOne({
-                where: {
-                    Uid: id
-                }
-            }).then((data) => {
-                var send = { name: data[0].Uname };
-                console.log(send)
-                return res.json(send);
-            })
-        } else {
-            // for a weird situation that they do not match or someone is trying to use this url as an api it wont work
-            req.session.destroy((err) => {
-                if (err) {
-                    // maybe a flash err could be here
-                    return res.redirect("/");
-                } else {
-                    return res.redirect("/login");
-                }
-            })
-        }
-    })
+    // app.get('/user/:id', (req, res) => {
+    //     var idd = req.params.id;
+    //     // making sure that session id matches the information we will be sending back
+    //     if (idd == req.session.user) {
+    //         db.Users.findOne({
+    //             where: {
+    //                 id: idd
+    //             }
+    //         }).then((data) => {
+    //             console.log(data.dataValues)
+    //             var send = { name: data.dataValues.nameX };
+    //             console.log(send)
+    //             return res.json(send);
+    //         })
+    //     } else {
+    //         // for a weird situation that they do not match or someone is trying to use this url as an api it wont work
+    //         req.session.destroy((err) => {
+    //             if (err) {
+    //                 // maybe a flash err could be here
+    //                 return res.redirect("/");
+    //             } else {
+    //                 return res.redirect("/login");
+    //             }
+    //         })
+    //     }
+    // })
 
     // destroying the session when the user logs out
     app.post("/logout/user", (req, res) => {
