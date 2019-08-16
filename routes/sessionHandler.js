@@ -13,7 +13,7 @@ function session(app) {
     app.post("/compare/users", (req, res) => {
         var { username, password } = req.body;
 
-        db.people.findAll({})
+        db.Users.findAll({})
             .then((data) => {
 
                 var userID = data.find((x) => {
@@ -22,10 +22,13 @@ function session(app) {
                         return x
                     }
                 });
-                console.log("---------------")
-                console.log(userID.dataValues.id)
-                console.log("---------------")
+
+                console.log(userID);
+
                 if (userID) {
+                    console.log("---------------")
+                    console.log(userID.dataValues.id)
+                    console.log("---------------")
                     // Uid might be changed due to table structure && only giving user id so the password isnt send
                     req.session.user = userID.dataValues.id;
                     // "/" might be where the user is authenticated and see their info
@@ -51,7 +54,7 @@ function session(app) {
                 // req.flash('err', 'Invalid Email');
                 // return res.redirect("/register");
                 // } else {
-                db.people.create({
+                db.Users.create({
                     nameX: name,
                     usernameX: username,
                     password1X: password1
