@@ -23,6 +23,13 @@ module.exports = function(app) {
       });
     }
   });
+
+  app.get("/dash", (req, res) => {
+    if (!req.session.user){
+      return res.redirect("/login")
+    }
+    res.sendFile(path.join(__dirname, "../public/question.html")) //("create")
+  })
   
   
   //Do we need similar app.get requests for each of the handlebar or html pages?

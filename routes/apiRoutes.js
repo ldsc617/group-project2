@@ -1,12 +1,21 @@
 var db = require("../models");
+var Op = require("sequelize").Op
 
 module.exports = function (app) {
-  // Get all examples1 ex: use this for creating users/Authors
-  app.get("/api/User", function (req, res) {
-    db.Users.findAll({
-      include: [db.CreatePosts]
-    }).then(function (dbUsers) {
-      res.json(dbUsers);
+  // Get all examples1 ex: use this for creating users/Authors ( it has been tested and works )
+  app.get("/api/all/User", function (req, res) {
+    db.posts.findAll({
+      where: {
+        UserId: {
+          [Op.not]: req.session.user
+        }
+      },
+      include: [db.Users]
+    }).then(function (all) {
+      console.log("-=-=-=-=-=-=-=-=-=-=-=-");
+      console.log(all);
+      console.log("-=-=-=-=-=-=-=-=-=-=-=-");
+      res.json(all);
     });
   });
 
@@ -14,6 +23,7 @@ module.exports = function (app) {
   // We set the value to an array of the models we want to include in a left outer join
   // In this case, just db.Post
   // 
+  // ( it has been tested and works )
   app.get("/api/User/:id", function (req, res) {
     db.posts.findAll({
       where: {
