@@ -23,20 +23,22 @@
             <div class="row">
                 <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center ">
                     <header>
-                        <p>this will be the login dashboard thing</p>
+                        <h1>Welcome to PorK!</h1>
                     </header>
                 </div>
             </div>
         </div>
-
+        
         <div class="container">
             <div class="row">
                 <div class="card mainBox m-3 p-2 col" id="profile">
                     <div class="card-header m-1 text-secondary font-weight-bold">
-                        <h1>Hi <span id="name"></span>, Type in the question you would like to ask below!</h1>
+                        <h1>Hi <span id="name"></span>, What's your question today?</h1>
                     </div>
                     <div class="card-body">
+                        <h2>Type in your Question Below to ask the Community a Question!</h2>
                         <input type="text" id="question">
+                        <h5>New to the Site? <br> No Problem! <br> Once you've entered your question select the catagory and your done!</h5>
 
                         <select id="cat">
                             <option value="0">Select a Catagory</option>
@@ -44,8 +46,7 @@
                             <option value="2">Advice</option>
                             <option value="3">Educational</option>
                         </select>
-
-                        <button id="sendQuestion">Submit Question</button><br><br>
+                        <br><br><button id="sendQuestion">Submit Question</button><br><br>
                         <p id="err"></p><br>
                         <div class="container">
                             <div class="row">
@@ -67,30 +68,30 @@
 
             </div>
         </div>
-        
+
         <div class="container">
             <div id="otherSide">
                 <button id="toProfile">Click me to return homepage</button>
-                
-                
+
+
                 <p>Below should show other user's questions!</p>
-                
+
                 <section id="otherQuestions">
-                    
+
                 </section>
-                
+
             </div>
         </div>
-        
-        
+
+
         <div class="container">
             <button id="logout">Logout</button>
         </div>
-        
+
     </div>
-    
-</div>
-    
+
+    </div>
+
     <script src="index.js"></script>
 </body>
 
