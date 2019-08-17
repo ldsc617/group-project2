@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "rootroot",
-    "database": "porKdb",
+    "database": "porkdb",
     "host": "localhost",
     "dialect": "mysql"
   },
