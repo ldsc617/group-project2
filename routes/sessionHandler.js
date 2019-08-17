@@ -1,58 +1,68 @@
+//Think of this as a log in home page
+// this page handles checking the user's name with their password and then routes them to the main index page 
+
 var db = require("../models");
 // const bcrypt = require('bcrypt');
 
 // to validtate information the user sends us
 // const { check, validationResult } = require('express-validator');
 
-function session(app){
+function session(app) {
 
     // authenticating the user
     app.post("/compare/users", (req, res) => {
-        var {username, password} = req.body;
+        var { username, password } = req.body;
 
-        db.people.findAll({})
-        .then((data) => {
-            
-            var userID = data.find((x) => {
-                // Uname and Upassword might be changed due to table structure
-                if (username == x.usernameX && password == x.password1X){
-                    return x
+        db.Users.findAll({})
+            .then((data) => {
+
+                var userID = data.find((x) => {
+                    // Uname and Upassword might be changed due to table structure
+                    if (username == x.usernameX && password == x.password1X) {
+                        return x
+                    }
+                });
+
+                if (userID) {
+                    console.log("---------------")
+                    console.log(userID.dataValues.id)
+                    console.log("---------------")
+                    // Uid might be changed due to table structure && only giving user id so the password isnt send
+                    req.session.user = {
+                                        id: userID.dataValues.id,
+                                        cat: userID.dataValues.category,
+                                        name: userID.dataValues.nameX
+                                        };
+                    // "/" might be where the user is authenticated and see their info
+                    return res.redirect("/");
+                } else {
+                    req.flash('err2', 'Username and/or Password is incorrect');
+                    return res.redirect("/login");
                 }
-            });
-            console.log("---------------")
-            console.log(userID)
-            console.log("---------------")
-            if (userID){
-                // Uid might be changed due to table structure && only giving user id so the password isnt send
-                req.session.user = userID.dataValues.id;
-                // "/" might be where the user is authenticated and see their info
-                return res.redirect("/");
-            } else {
-                req.flash('err2', 'Username and/or Password is incorrect');
-                return res.redirect("/login");
-            }
 
-        })
+            })
     })
 
     // new user making a account
-    app.post("/create/account", (req, res) => { 
-        var { name, username, password1, password2 } = req.body;
+    app.post("/create/account", (req, res) => {
+        console.log(req.body)
+        var { name, username, cat, password1, password2 } = req.body;
         // were all the inputs entered
-        if (name, username, password1, password2){
+        if (name, username, cat, password1, password2) {
             // do both paswords match 
-            if ( password1 == password2 ){
-                // const errors = validationResult(req);
-                // does the email entered pass the express-validor email check
-                // if (!errors.isEmpty()){
-                    // req.flash('err', 'Invalid Email');
-                    // return res.redirect("/register");
-                // } else {
-                    db.people.create({
-                        nameX: name,
-                        usernameX: username,
-                        password1X: password1
-                    })
+            if (password1 == password2) {
+
+                if(cat == "0"){
+                    req.flash('err', 'You have to select a category');
+                    return res.redirect("/register");
+                }
+
+                db.Users.create({
+                    nameX: name,
+                    usernameX: username,
+                    password1X: password1,
+                    category: cat
+                })
                     .then((data) => {
                         console.log(data + " added")
                         return res.redirect("/login")
@@ -73,38 +83,10 @@ function session(app){
         return res.json(req.session.user)
     })
 
-    // after the browser gets the user id from up there a another function will be called to get the rest of the information
-    app.get('/user/info/:id', (req, res) => {
-        var id = req.params.id;
-        // making sure that session id matches the information we will be sending back
-        if (id == req.session.user){
-            db.findOne({
-                where: {
-                    Uid: id
-                }
-            })
-            .then((data) => {
-                var send = {name: data[0].Uname};
-                console.log(send)
-                return res.json(send);
-            })
-        } else {
-            // for a weird situation that they do not match or someone is trying to use this url as an api it wont work
-            req.session.destroy((err) => {
-                if (err){
-                    // maybe a flash err could be here
-                    return res.redirect("/");
-                } else {
-                    return res.redirect("/login");
-                }
-            })
-        }
-    })
-
     // destroying the session when the user logs out
     app.post("/logout/user", (req, res) => {
         req.session.destroy((err) => {
-            if (err){
+            if (err) {
                 return res.redirect("/");
             } else {
                 return res.redirect("/login");

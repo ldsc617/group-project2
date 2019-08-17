@@ -1,7 +1,16 @@
-module.exports = function(sequelize, DataTypes) {
-    var posts = sequelize.define ("posts", {
-        question: DataTypes.STRING
-    })
+module.exports = function (sequelize, DataTypes) {
+  var posts = sequelize.define("posts", {
+    question: DataTypes.STRING,
+    category: DataTypes.STRING
+  });
 
-    return posts;
+  posts.associate = (models) => {
+    posts.belongsTo(models.Users, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+  return posts;
 };

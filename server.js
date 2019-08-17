@@ -3,6 +3,7 @@ var express = require("express");
 // var exphbs = require("express-handlebars");
 var session = require("express-session");
 var flash = require("connect-flash");
+var path = require("path");
 
 var db = require("./models");
 
@@ -12,11 +13,14 @@ var PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-// app.use(express.static("public"));
 
-// app.get('style.css', (req, res) => {
-//   res.sendFile(path.join(__dirname, "public/styles/style.css"))
-// })
+app.get('/index.js', (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/js/index.js"))
+})
+
+app.get('/styles.css', (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/styles/styles.css"))
+})
 
 // for express to use session
 app.use(
@@ -30,15 +34,6 @@ app.use(
 
 // for flashing messages
 app.use(flash());
-
-// Handlebars
-// app.engine(
-//   "handlebars",
-//   exphbs({
-//     defaultLayout: "main"
-//   })
-// );
-// app.set("view engine", "handlebars");
 
 // Routes
 require("./routes/apiRoutes")(app);
