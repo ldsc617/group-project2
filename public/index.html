@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+    <p>this will be the login dashboard thing</p>
+
+    <div id="profile">
+
+            <button id="others">See other uses post</button><br><br>
+
+            <p>hi <span id="name"></span>, would you like to ask a question!</p>
+    
+            <input type="text" id="question">
+
+            <select id="cat">
+                <option value="0">Select a Catagory</option>
+                <option value="1">Entertainment</option>
+                <option value="2">Advice</option>
+                <option value="3">Educational</option>
+            </select>
+        
+            <button id="sendQuestion">Submit Question</button><br><br>
+            <p id="err"></p><br>
+
+            <p>Change Categories</p>
+            <select id="catChange">
+                <option value="0">Select a Catagory</option>
+                <option value="1">Entertainment</option>
+                <option value="2">Advice</option>
+                <option value="3">Educational</option>
+            </select>
+            <button id="change">Change Category</button>
+
+            <section id="display">
+        
+            </section>
+
+    </div>
+
+    <div id="otherSide">
+
+        <button id="toProfile">Your Stuff</button>
+
+        <p>other people question!</p>
+
+        <section id="otherQuestions">
+
+        </section>
+
+    </div>
+
+    <button id="logout">Logout</button>
+
+    
+<script src="index.js"></script>
+</body>
+</html>
