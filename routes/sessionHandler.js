@@ -30,7 +30,8 @@ function session(app) {
                     // Uid might be changed due to table structure && only giving user id so the password isnt send
                     req.session.user = {
                                         id: userID.dataValues.id,
-                                        cat: userID.dataValues.category
+                                        cat: userID.dataValues.category,
+                                        name: userID.dataValues.nameX
                                         };
                     // "/" might be where the user is authenticated and see their info
                     return res.redirect("/");

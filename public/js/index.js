@@ -2,6 +2,7 @@ var toPost = -1;
 
 $.get("/get/user", (res) => {
     console.log(res)
+    $("#name").text(res.name);
     toPost = res.id
     next(res.id);
     next2(res.cat)
@@ -22,7 +23,7 @@ function next2(cat){
     $.get(`/api/all/${cat}`, (res) => {
         console.log(res)
         for (let i = 0; i < res.length; i++) {
-            if (i == parseInt(toPost)){
+            if (res[i].UserId == parseInt(toPost)){
                 null
             } else {
             var p = $("<p>").text(res[i].question)
