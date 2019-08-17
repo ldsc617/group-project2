@@ -1,5 +1,5 @@
 var db = require("../models");
-// var Op = require("sequelize").Op;
+var Op = require("sequelize").Op;
 
 module.exports = function(app) {
   // Get all examples1 ex: use this for creating users/Authors ( it has been tested and works )
@@ -7,22 +7,27 @@ module.exports = function(app) {
     db.posts
       .findAll({
         where: {
-          category: req.params.cat
+          UserId: {
+            [Op.not]: req.session.user.id
+          }
         },
         include: [db.Users]
       })
       .then(function(all) {
-        console.log(all[0].dataValues);
-        // console.log(all[0].dataValues.User.dataValues.nameX);
+        // console.log(all);
+        // console.log(all[0].User.dataValues.nameX);
         // console.log(all[0].dataValues.User.dataValues.category);
         var allx = [];
         for (i = 0; i < all.length; i++) {
-          allx.push({
-            question: all[i].dataValues.question,
-            name: all[i].dataValues.User.dataValues.nameX,
-            cat: all[i].dataValues.User.dataValues.category
-          });
+          if (all[i].category == req.session.user.cat){
+            allx.push({
+              question: all[i].question,
+              name: all[i].User.dataValues.nameX
+              // cat: all[i].dataValues.User.dataValues.category
+            });
+          }
         }
+        console.log(allx)
         res.json(allx);
       });
   });
