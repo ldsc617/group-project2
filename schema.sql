@@ -10,8 +10,8 @@ CREATE TABLE Users (
     
 );
 USE porKdb;
-CREATE TABLE CreatePosts (
-    CreatePostsID INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE Posts (
+    PostsID INT NOT NULL AUTO_INCREMENT,
     fkUserID int,
     FOREIGN KEY (fkUserID) REFERENCES Users(UserID),
     Posts VARCHAR (255) NOT NULL,

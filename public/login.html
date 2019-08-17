@@ -1,41 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <!-- Font Awesome CSS Icons (For cool glyphicons) -->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />-->
 </head>
+
 <body>
-    <form action="/compare/users" method="POST" >
-    
-    <label for="username">Username</label>
-    <input type="text" name="username" placeholder="Username"><br><br>
+    <div class="container" id="bg">
+        <div class="container">
+            <div class="row">
+                <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center ">
+                    <header>
+                        <h1>Welcome to PorK! Enter your information to log in below!</h1>
+                        <h2>New to the Site? No Problem! Just click the link below to create your own account!</h2>
+                    </header>
+                </div>
+            </div>
+        </div>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" placeholder="Password"><br><br>
+        <div class="container">
+            <div class="row">
+                <div class="card mainBox m-3 p-2 col col-lg-12">
+                    <div class="card-header m-1 text-secondary font-weight-bold">Log In!</div>
+                    <div class="card-body m-3 p-2 col col-lg-12">
+                        <form action="/compare/users" method="POST">
 
-    <button type="submit">submit</button>
+                            <label for="username">Username</label>
+                            <input type="text" name="username" placeholder="Username"><br><br>
 
-</form>
+                            <label for="password">Password</label>
+                            <input type="password" name="password" placeholder="Password"><br><br>
 
-<p id="err"></p><br>
+                            <button type="submit">submit</button>
 
-<a href="/register">Create a account</a>
+                        </form>
 
-<script>
+                        <p id="err"></p><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="card mainBox m-3 p-2 col col-lg-12">
+                <div class="card-header m-3 p-2">
 
-    $.get("/login/errors", (res) => {
-        console.log(res);
-        $("#err").text(res);
-    })
+                    <a href="/register">Click Here to Create an Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-</script>
+    <script>
+
+        $.get("/login/errors", (res) => {
+            console.log(res);
+            $("#err").text(res);
+        })
+
+    </script>
 </body>
+
 </html>
