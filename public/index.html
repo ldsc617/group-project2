@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 </head>
 <body>
     <p>this will be the login dashboard thing</p>
@@ -15,5 +19,14 @@
 
     <button id="sendQuestion">Submit Question</button>
     
+<script>
+    $("#sendQuestion").on("click", () => {
+        var send = {question: $("#question").val()}
+        $.post("/api/post", send)
+        .then(() => {
+            console.log("good to go")
+        })
+    })
+</script> 
 </body>
 </html>

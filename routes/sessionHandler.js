@@ -20,7 +20,7 @@ function session(app){
                 }
             });
             console.log("---------------")
-            console.log(userID.dataValues.id)
+            console.log(userID)
             console.log("---------------")
             if (userID){
                 // Uid might be changed due to table structure && only giving user id so the password isnt send
