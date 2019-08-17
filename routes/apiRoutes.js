@@ -3,15 +3,28 @@ var Op = require("sequelize").Op
 
 module.exports = function (app) {
   // Get all examples1 ex: use this for creating users/Authors ( it has been tested and works )
-  app.get("/api/all/:cat", function (req, res) {
-    db.posts.findAll({
-      where: {
-        category: req.params.cat
-      },
-      // include: [db.Users]
-    }).then(function (all) {
-      res.json(all);
-    });
+  app.get("/api/all/:cat", function(req, res) {
+    db.posts
+      .findAll({
+        where: {
+          category: req.params.cat
+        },
+        include: [db.Users]
+      })
+      .then(function(all) {
+        // console.log(all[0].dataValues.question);
+        console.log(all[0].dataValues.User.dataValues.nameX);
+        console.log(all[0].dataValues.User.dataValues.category);
+        var allx = [];
+        for (i = 0; i < all.length; i++) {
+          allx.push({
+            question: all[i].dataValues.question,
+            name: all[i].dataValues.User.dataValues.nameX,
+            cat: all[i].dataValues.User.dataValues.category
+          });
+        }
+        res.json(allx);
+      });
   });
 
   // Here we add an "include" property to our options in our findOne query
