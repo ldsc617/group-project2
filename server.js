@@ -14,13 +14,13 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get('/index.js', (req, res) => {
-  res.sendFile(path.join(__dirname, "/public/js/index.js"))
-})
+app.get("/index.js", function(req, res) {
+  res.sendFile(path.join(__dirname, "/public/js/index.js"));
+});
 
-app.get('/styles.css', (req, res) => {
-  res.sendFile(path.join(__dirname, "/public/styles/styles.css"))
-})
+app.get("/styles.css", function(req, res) {
+  res.sendFile(path.join(__dirname, "/public/styles/styles.css"));
+});
 
 // for express to use session
 app.use(

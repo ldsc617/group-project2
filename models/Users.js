@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     category: DataTypes.STRING
   });
 
-  Users.associate = (models) => {
+  Users.associate = function(models) {
     Users.hasMany(models.posts, {
       onDelete: "cascade"
     });
@@ -14,12 +14,3 @@ module.exports = function(sequelize, DataTypes) {
 
   return Users;
 };
-
-//below is a posible example to allow deletion? this would be inserted before return people;
-//~~~~~~
-// people.associate = function(models) {
-//   // Associating User with Posts
-//   // When an User is deleted, also delete any associated Posts
-//   people.hasMany(models.Post, {
-//     onDelete: "cascade"
-//   });
