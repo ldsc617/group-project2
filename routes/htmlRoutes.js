@@ -1,27 +1,38 @@
+// *********************************************************************************
+// html-routes.js - this file offers a set of routes for sending users to the various html pages
+// *********************************************************************************
+
+//path exits in models can I use it here?
 var db = require("../models");
+var path = require("path");
 
 module.exports = function(app) {
-  // Load index page
+  // at route / get and render index.handlebars page
+  // Example is a var found in example.js I believe this provides the sequlized database data??
+
+  // Still not sure where msg: "welcome come into play"
+
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
+    if (!req.session.user) {
+      return res.redirect("/login");
+    } else {
+      db.Users.findAll({}).then(function() {
+        res.sendFile(path.join(__dirname, "../public/index.html"));
       });
-    });
+    }
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
+  app.get("/register", function(req, res) {
+    if (req.session.user) {
+      return res.redirect("/");
+    }
+    res.sendFile(path.join(__dirname, "../public/create.html")); //("create")
   });
 
-  // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
+  app.get("/login", function(req, res) {
+    if (req.session.user) {
+      return res.redirect("/");
+    }
+    res.sendFile(path.join(__dirname, "../public/login.html")); //("login")
   });
 };
