@@ -8,7 +8,7 @@ module.exports = function (app) {
       where: {
         category: req.params.cat
       },
-      include: [db.Users]
+      // include: [db.Users]
     }).then(function (all) {
       res.json(all);
     });
@@ -24,7 +24,7 @@ module.exports = function (app) {
       where: {
         UserId: req.session.user.id
       },
-      include: [db.Users]
+      // include: [db.Users]
     }).then(function (dbUsers) {
       res.json(dbUsers);
     });
@@ -36,20 +36,20 @@ module.exports = function (app) {
     var UserId = parseInt(req.body.UserID);
     var category = req.body.cat;
 
-    if (category == "0"){
+    if (category == "0") {
       req.flash('err3', 'You have to select a category');
       return res.send(req.flash("err3"));
     } else {
 
-    db.posts.create({
-      question,
-      category,
-      UserId
-    }).then((data) => {
-      res.json(data);
-    });
+      db.posts.create({
+        question,
+        category,
+        UserId
+      }).then((data) => {
+        res.json(data);
+      });
 
-  }
+    }
 
   });
 
@@ -64,6 +64,19 @@ module.exports = function (app) {
       res.json(dbUsers);
     });
   });
+
+  app.put("/change/:cat", (req, res) => {
+    var category = req.params.cat;
+    db.Users.update({
+      category },{
+      where: {
+        id: req.session.user.id
+      }
+    })
+    .then((data) => {
+      res.json(data)
+    })
+})
 
   // and now use the same example code below for creating a post
   // this example code is also missing a put/ update request. Would we like to add one to allow

@@ -47,6 +47,23 @@ $("#sendQuestion").on("click", () => {
     })
 })
 
+$("#change").on("click", () => {
+    var catc = $("#catChange").val();
+    if (catc !== "0"){
+
+        $.ajax({
+            url: `/change/${catc}`,
+            method: "PUT"
+        })
+        .then((back) => {
+            console.log(back)
+        })
+
+    } else {
+        $("#err").text("Please select a category");
+    }
+})
+
 $("#logout").on("click", () => {
     $.post("/logout/user", () => {
         window.location.href = "/login"
