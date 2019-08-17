@@ -10,9 +10,6 @@ module.exports = function (app) {
       },
       include: [db.Users]
     }).then(function (all) {
-      console.log("-=-=-=-=-=-=-=-=-=-=-=-");
-      // console.log(all);
-      console.log("-=-=-=-=-=-=-=-=-=-=-=-");
       res.json(all);
     });
   });
@@ -23,16 +20,12 @@ module.exports = function (app) {
   // 
   // ( it has been tested and works )
   app.get("/api/User/:id", function (req, res) {
-    console.log("-=-=-=-=-=-=-=-=-=-=-=-");
-    // console.log(req.session.user.id);
-    console.log("-=-=-=-=-=-=-=-=-=-=-=-");-
     db.posts.findAll({
       where: {
         UserId: req.session.user.id
       },
       include: [db.Users]
     }).then(function (dbUsers) {
-      // console.log(dbUsers)
       res.json(dbUsers);
     });
   });
@@ -42,9 +35,12 @@ module.exports = function (app) {
     var question = req.body.question;
     var UserId = parseInt(req.body.UserID);
     var category = req.body.cat;
-    // console.log("-=-=-=-=-=-=-=-=-=-=-=-");
-    // console.log(category)
-    // console.log("-=-=-=-=-=-=-=-=-=-=-=-");
+
+    if (category == "0"){
+      req.flash('err3', 'You have to select a category');
+      return res.send(req.flash("err3"));
+    } else {
+
     db.posts.create({
       question,
       category,
@@ -52,7 +48,14 @@ module.exports = function (app) {
     }).then((data) => {
       res.json(data);
     });
+
+  }
+
   });
+
+  app.get("/question/errors", (req, res) => {
+    res.send(req.flash("err3"));
+  })
 
 
   // Delete an User by id ==== Should this be moved for an admin function?

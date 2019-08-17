@@ -41,7 +41,9 @@ $("#sendQuestion").on("click", () => {
     }
 
     $.post("/api/post", send, (r) => {
-        console.log(r)
+        if(r == "You have to select a category"){
+            $("#err").text(r);
+        }
     })
 })
 
@@ -59,4 +61,9 @@ $("#toProfile").on("click", () => {
 $("#others").on("click", () => {
     $("#otherSide").css("display", "block")
     $("#profile").css("display", "none")
+})
+
+$.get("/question/errors", (res) => {
+    console.log(res);
+    $("#err").text(res);
 })

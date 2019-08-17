@@ -51,12 +51,12 @@ function session(app) {
         if (name, username, cat, password1, password2) {
             // do both paswords match 
             if (password1 == password2) {
-                // const errors = validationResult(req);
-                // does the email entered pass the express-validor email check
-                // if (!errors.isEmpty()){
-                // req.flash('err', 'Invalid Email');
-                // return res.redirect("/register");
-                // } else {
+
+                if(cat == "0"){
+                    req.flash('err', 'You have to select a category');
+                    return res.redirect("/register");
+                }
+
                 db.Users.create({
                     nameX: name,
                     usernameX: username,
