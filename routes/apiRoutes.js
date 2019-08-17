@@ -12,9 +12,9 @@ module.exports = function(app) {
         include: [db.Users]
       })
       .then(function(all) {
-        // console.log(all[0].dataValues.question);
-        console.log(all[0].dataValues.User.dataValues.nameX);
-        console.log(all[0].dataValues.User.dataValues.category);
+        console.log(all[0].dataValues);
+        // console.log(all[0].dataValues.User.dataValues.nameX);
+        // console.log(all[0].dataValues.User.dataValues.category);
         var allx = [];
         for (i = 0; i < all.length; i++) {
           allx.push({

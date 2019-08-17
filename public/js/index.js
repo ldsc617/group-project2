@@ -44,6 +44,7 @@ $("#sendQuestion").on("click", function() {
     if (r === "You have to select a category") {
       $("#err").text(r);
     }
+    window.location.reload();
   });
 });
 
