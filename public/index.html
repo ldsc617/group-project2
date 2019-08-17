@@ -32,11 +32,10 @@
         <div class="container">
             <div class="row">
                 <div class="card mainBox m-3 p-2 col" id="profile">
-                    <div class="card-header m-1 text-secondary font-weight-bold">Click the buton below to see other
-                        user's posts</div>
+                    <div class="card-header m-1 text-secondary font-weight-bold">
+                        <h1>Hi <span id="name"></span>, Type in the question you would like to ask below!</h1>
+                    </div>
                     <div class="card-body">
-                        <p>hi <span id="name"></span>, would you like to ask a question!</p>
-
                         <input type="text" id="question">
 
                         <select id="cat">
@@ -48,6 +47,11 @@
 
                         <button id="sendQuestion">Submit Question</button><br><br>
                         <p id="err"></p><br>
+                        <div class="container">
+                            <div class="row">
+                                <section id="display"></section>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -59,11 +63,9 @@
                         <option value="3">Educational</option>
                     </select>
                     <button id="change">Change Category</button>
+                    <button id="others">Click me to Show other's questions</button><br><br>
                 </div>
 
-                <section id="display">
-
-                </section>
 
             </div>
         </div>
@@ -71,7 +73,7 @@
 
     <div class="container">
         <div id="otherSide">
-            <button id="others">See other uses post</button><br><br>
+            <button id="toProfile">Click me to show my questions</button>
 
 
             <p>other people question!</p>
@@ -79,10 +81,10 @@
             <section id="otherQuestions">
 
             </section>
-            <button id="toProfile">Your Stuff</button>
 
         </div>
     </div>
+
 
     <div class="container">
         <button id="logout">Logout</button>
