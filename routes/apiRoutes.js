@@ -3,18 +3,13 @@ var Op = require("sequelize").Op
 
 module.exports = function (app) {
   // Get all examples1 ex: use this for creating users/Authors ( it has been tested and works )
-  app.get("/api/all/User", function (req, res) {
+  app.get("/api/all/:cat", function (req, res) {
     db.posts.findAll({
       where: {
-        UserId: {
-          [Op.not]: req.session.user
-        }
+        category: req.params.cat
       },
-      include: [db.Users]
+      // include: [db.Users]
     }).then(function (all) {
-      console.log("-=-=-=-=-=-=-=-=-=-=-=-");
-      console.log(all);
-      console.log("-=-=-=-=-=-=-=-=-=-=-=-");
       res.json(all);
     });
   });
@@ -27,9 +22,9 @@ module.exports = function (app) {
   app.get("/api/User/:id", function (req, res) {
     db.posts.findAll({
       where: {
-        UserId: req.session.user
+        UserId: req.session.user.id
       },
-      include: [db.Users]
+      // include: [db.Users]
     }).then(function (dbUsers) {
       res.json(dbUsers);
     });
@@ -39,13 +34,28 @@ module.exports = function (app) {
   app.post("/api/post", function (req, res) {
     var question = req.body.question;
     var UserId = parseInt(req.body.UserID);
-    db.posts.create({
-      question,
-      UserId
-    }).then((data) => {
-      res.json(data);
-    });
+    var category = req.body.cat;
+
+    if (category == "0") {
+      req.flash('err3', 'You have to select a category');
+      return res.send(req.flash("err3"));
+    } else {
+
+      db.posts.create({
+        question,
+        category,
+        UserId
+      }).then((data) => {
+        res.json(data);
+      });
+
+    }
+
   });
+
+  app.get("/question/errors", (req, res) => {
+    res.send(req.flash("err3"));
+  })
 
 
   // Delete an User by id ==== Should this be moved for an admin function?
@@ -54,6 +64,19 @@ module.exports = function (app) {
       res.json(dbUsers);
     });
   });
+
+  app.put("/change/:cat", (req, res) => {
+    var category = req.params.cat;
+    db.Users.update({
+      category },{
+      where: {
+        id: req.session.user.id
+      }
+    })
+    .then((data) => {
+      res.json(data)
+    })
+})
 
   // and now use the same example code below for creating a post
   // this example code is also missing a put/ update request. Would we like to add one to allow

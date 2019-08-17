@@ -28,7 +28,11 @@ function session(app) {
                     console.log(userID.dataValues.id)
                     console.log("---------------")
                     // Uid might be changed due to table structure && only giving user id so the password isnt send
-                    req.session.user = userID.dataValues.id;
+                    req.session.user = {
+                                        id: userID.dataValues.id,
+                                        cat: userID.dataValues.category,
+                                        name: userID.dataValues.nameX
+                                        };
                     // "/" might be where the user is authenticated and see their info
                     return res.redirect("/");
                 } else {
@@ -41,21 +45,23 @@ function session(app) {
 
     // new user making a account
     app.post("/create/account", (req, res) => {
-        var { name, username, password1, password2 } = req.body;
+        console.log(req.body)
+        var { name, username, cat, password1, password2 } = req.body;
         // were all the inputs entered
-        if (name, username, password1, password2) {
+        if (name, username, cat, password1, password2) {
             // do both paswords match 
             if (password1 == password2) {
-                // const errors = validationResult(req);
-                // does the email entered pass the express-validor email check
-                // if (!errors.isEmpty()){
-                // req.flash('err', 'Invalid Email');
-                // return res.redirect("/register");
-                // } else {
+
+                if(cat == "0"){
+                    req.flash('err', 'You have to select a category');
+                    return res.redirect("/register");
+                }
+
                 db.Users.create({
                     nameX: name,
                     usernameX: username,
-                    password1X: password1
+                    password1X: password1,
+                    category: cat
                 })
                     .then((data) => {
                         console.log(data + " added")

@@ -1,99 +1,86 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var toPost = -1;
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
-};
+$.get("/get/user", (res) => {
+    console.log(res)
+    $("#name").text(res.name);
+    toPost = res.id
+    next(res.id);
+    next2(res.cat)
+})
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+function next(id) {
+    $.get(`/api/User/${id}`, (res) => {
+        console.log(res)
+        for (let k in res) {
+            var p = $("<p>").text(res[k].question)
+            $("#display").append(p);
+        }
+    })
+}
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
+function next2(cat){
+    console.log(cat)
+    $.get(`/api/all/${cat}`, (res) => {
+        console.log(res)
+        for (let i = 0; i < res.length; i++) {
+            if (res[i].UserId == parseInt(toPost)){
+                null
+            } else {
+            var p = $("<p>").text(res[i].question)
+            $("#otherQuestions").append(p);
+            }
+        }
+    })
+}
+$("#sendQuestion").on("click", () => {
+    console.log(toPost)
+    var send = {
+        question: $("#question").val(),
+        UserID: toPost,
+        cat: $("#cat").val()
+    }
+
+    $.post("/api/post", send, (r) => {
+        if(r == "You have to select a category"){
+            $("#err").text(r);
+        }
+    })
+})
+
+$("#change").on("click", () => {
+    var catc = $("#catChange").val();
+    if (catc !== "0"){
+
+        $.ajax({
+            url: `/change/${catc}`,
+            method: "PUT"
         })
-        .append($a);
+        .then((back) => {
+            console.log(back)
+        })
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+    } else {
+        $("#err").text("Please select a category");
+    }
+})
 
-      $li.append($button);
+$("#logout").on("click", () => {
+    $.post("/logout/user", () => {
+        window.location.href = "/login"
+    })
+})
 
-      return $li;
-    });
+$("#toProfile").on("click", () => {
+    $("#otherSide").css("display", "none")
+    $("#profile").css("display", "block")
+})
 
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
+$("#others").on("click", () => {
+    $("#otherSide").css("display", "block")
+    $("#profile").css("display", "none")
+})
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
-
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
-
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
-};
-
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$.get("/question/errors", (res) => {
+    console.log(res);
+    $("#err").text(res);
+})
