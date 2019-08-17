@@ -3,17 +3,15 @@ var Op = require("sequelize").Op
 
 module.exports = function (app) {
   // Get all examples1 ex: use this for creating users/Authors ( it has been tested and works )
-  app.get("/api/all/User", function (req, res) {
+  app.get("/api/all/:cat", function (req, res) {
     db.posts.findAll({
       where: {
-        UserId: {
-          [Op.not]: req.session.user
-        }
+        category: req.params.cat
       },
       include: [db.Users]
     }).then(function (all) {
       console.log("-=-=-=-=-=-=-=-=-=-=-=-");
-      console.log(all);
+      // console.log(all);
       console.log("-=-=-=-=-=-=-=-=-=-=-=-");
       res.json(all);
     });
@@ -25,12 +23,16 @@ module.exports = function (app) {
   // 
   // ( it has been tested and works )
   app.get("/api/User/:id", function (req, res) {
+    console.log("-=-=-=-=-=-=-=-=-=-=-=-");
+    // console.log(req.session.user.id);
+    console.log("-=-=-=-=-=-=-=-=-=-=-=-");-
     db.posts.findAll({
       where: {
-        UserId: req.session.user
+        UserId: req.session.user.id
       },
       include: [db.Users]
     }).then(function (dbUsers) {
+      // console.log(dbUsers)
       res.json(dbUsers);
     });
   });
@@ -39,8 +41,13 @@ module.exports = function (app) {
   app.post("/api/post", function (req, res) {
     var question = req.body.question;
     var UserId = parseInt(req.body.UserID);
+    var category = req.body.cat;
+    // console.log("-=-=-=-=-=-=-=-=-=-=-=-");
+    // console.log(category)
+    // console.log("-=-=-=-=-=-=-=-=-=-=-=-");
     db.posts.create({
       question,
+      category,
       UserId
     }).then((data) => {
       res.json(data);

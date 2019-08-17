@@ -22,42 +22,8 @@
     </section>
 
     <button id="logout">Logout</button>
-    
-<script>
-    
-    // var toPost = -1;
 
-    // $.get("/get/user", (res) => {
-    //     toPost = res
-    //     next(res);
-    // })
-
-    $.get("/api/all/User", (res) => {
-        console.log(res)
-        for ( let k in res ){
-            var p = $("<p>").text(res[k].question)
-            $("#otherQuestions").append(p);
-        }
-    })
-
-    // $("#sendQuestion").on("click", () => {
-    //     console.log(toPost)
-    //     var send = {
-    //         question: $("#question").val(),
-    //         UserID: toPost
-    //     }
-
-    //     $.post("/api/post", send, (r) => {
-    //         console.log(r)
-    //     })
-    // })
-
-    $("#logout").on("click", () => {
-        $.post("/logout/user", () => {
-            window.location.href = "/login"
-        })
-    })
-
+<script src="js/index.js">
 </script>
 </body>
 </html>

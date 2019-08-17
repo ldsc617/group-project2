@@ -1,3 +1,8 @@
-.list-group-item {
-  line-height: 2.5;
+body {
+  margin: 0;
+  background-color: lightgray
+}
+
+#otherSide {
+  display: none;
 }
