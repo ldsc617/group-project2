@@ -27,7 +27,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/login.html")); //("login")
   });
 
-  app.get("/comments", function(req, res) {
+  app.get("/post/:id", function(req, res) {
     if (!req.session.user) {
       return res.redirect("/login");
     }
@@ -35,3 +35,8 @@ module.exports = function(app) {
   });
 
 };
+
+
+// app.get("/api/post/:id", function(req, res){
+    
+// })
