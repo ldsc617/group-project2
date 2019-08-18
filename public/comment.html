@@ -23,24 +23,48 @@
             <div class="row">
                 <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center ">
                     <header>
+                        <!--The line below should be changed to include logo and tag line-->
                         <h1>Welcome to PorK!</h1>
                     </header>
                 </div>
             </div>
         </div>
-    
+
+        <div class="container">
+            <div class="row">
+                <div class="card mainBox m-3 p-2 col" id="profile">
+                    <div class="card-header m-1 text-secondary font-weight-bold">
+                        <!--Optional text forcard header displayed below including the current logged in user's name-->
+                        <h1>Hi <span id="name"></span>, Here's the Question you selected.</h1>
+                    </div>
+                    <div class="card-body">
+                        <!--This section should display the post the user would
+                            like to see the comments on-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
                 <div class="row">
                     <div class="card mainBox m-3 p-2 col" id="profile">
                         <div class="card-header m-1 text-secondary font-weight-bold">
-                            <!--Option text for header displayed below-->
-                            <h1>Hi <span id="name"></span>, Heres the comments on the question you selected.</h1>
+                            <!--Optional text for card header displayed below-->
+                            <h1> Here's the comments on the above Question you selected.</h1>
                         </div>
                         <div class="card-body">
-                            <!--This section should display the post the user would
-                            like to see the comments on-->
+                            <!--This section should display the comments all users have 
+                                have posted in regards to the above question-->
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <button id="logout">Logout</button>
+        </div>
+    
     
     </div>
 
