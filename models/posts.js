@@ -5,11 +5,15 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   posts.associate = function(models) {
+    posts.hasMany(models.comments, {
+      onDelete: "cascade"
+    });
     posts.belongsTo(models.Users, {
       foreignKey: {
         allowNull: false
       }
     });
   };
+
   return posts;
 };

@@ -14,12 +14,11 @@ module.exports = function(app) {
         include: [db.Users]
       })
       .then(function(all) {
-        // console.log(all);
-        // console.log(all[0].User.dataValues.nameX);
-        // console.log(all[0].dataValues.User.dataValues.category);
         var allx = [];
+        // console.log(all[0].dataValues.category);
+        // console.log(all[0].User.dataValues);
         for (i = 0; i < all.length; i++) {
-          if (all[i].category == req.session.user.cat){
+          if (all[i].dataValues.category == req.session.user.cat){
             allx.push({
               question: all[i].question,
               name: all[i].User.dataValues.nameX
