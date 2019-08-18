@@ -56,6 +56,8 @@ $("#change").on("click", function() {
       method: "PUT"
     }).then(function(back) {
       console.log(back);
+      next2(back);
+      window.location.reload();
     });
   } else {
     $("#err").text("Please select a category");
