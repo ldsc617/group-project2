@@ -14,18 +14,20 @@ module.exports = function(app) {
         include: [db.Users]
       })
       .then(function(all) {
+        // console.log(all[0])
         var allx = [];
         // console.log(all[0].dataValues.category);
         // console.log(all[0].User.dataValues);
         for (i = 0; i < all.length; i++) {
           if (all[i].dataValues.category == req.session.user.cat){
             allx.push({
+              QID: all[i].id,
               question: all[i].question,
               name: all[i].User.dataValues.nameX
             });
           }
         }
-        console.log(allx)
+        // console.log(allx)
         res.json(allx);
       });
   });
@@ -90,4 +92,46 @@ module.exports = function(app) {
       res.json({category: category});
     });
   });
+  
+  // for comments
+
+  app.get("/api/post/:id", function(req, res){
+    db.posts.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: db.comments
+    })
+    .then(function(data){
+      console.log(data.dataValues);
+      res.json(data);
+    })
+  })
+
+  app.post("/comment/post/:pid", function(req, res){
+    var comment = req.body.comment;
+    console.log(req.params.pid.split(",")[0]);
+    db.comments.create({
+      comment: comment,
+      postId: req.params.pid.split(",")[0],
+      UserId: req.session.user.id
+    })
+    .then(function(data){
+      console.log(data)
+    })
+  })
+
+  app.get("/all/comments/:id", function(req, res){
+    db.comments.findAll({
+      where: {
+        postId: req.params.id
+      },
+      include: db.Users
+    })
+    .then(function(data){
+      // console.log(data)
+      res.json(data)
+    })
+  })
+
 };

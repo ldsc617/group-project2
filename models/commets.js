@@ -10,6 +10,11 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
         });
+        comments.belongsTo(models.Users, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
     };
 
     return comments

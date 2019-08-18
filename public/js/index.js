@@ -23,11 +23,12 @@ function next2(cat) {
   $.get("/api/all/" + cat, function(res) {
     console.log(res);
     for (i = 0; i < res.length; i++) {
+      console.log("i am in here")
       if (res[i].UserId === parseInt(toPost)) {
         null;
-      } else {
-        var p = $("<p>").text(res[i].question);
-        $("#otherQuestions").append(p);
+      } else { // res[i].QID 
+        var aHref = $("<a>").attr("href", "/post/"+res[i].QID).text(res[i].question);
+        $("#otherQuestions").append(aHref);
       }
     }
   });
