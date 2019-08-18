@@ -21,9 +21,10 @@
             <div class="row">
                 <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center ">
                     <header>
+                        <!--We should change this text to our logo here-->
                         <h1>Welcome to PorK!</h1> 
-                        <h2>Enter your information to create a log in below!</h2>
-                        <h3>New to the Site? <br> No Problem! <br> Just click the link below to create your own account!</h3>
+                    
+                        <h3>New to the Site? <br> No Problem! <br> Just enter your information below to create your own account!</h3>
                     </header>
                 </div>
             </div>
@@ -32,17 +33,17 @@
         <div class="container">
             <div class="row">
                 <div class="card mainBox m-3 p-2 col col-lg-12">
-                    <div class="card-header m-1 text-secondary font-weight-bold">Log In!</div>
+                    <div class="card-header m-1 text-secondary font-weight-bold">Create your Account!</div>
                     <div class="card-body m-3 p-2 col col-lg-12">
 
 
                         <form action="/create/account" method="POST">
-                            <label for="name">name</label>
+                            <label for="name">Your Name</label>
                             <input type="text" name="name" placeholder="Full Name" required><br><br>
 
-                            <label for="username">New Username</label>
+                            <label for="username">Your New Username</label>
                             <input type="text" name="username" placeholder="New username" required><br><br>
-
+                            <p>Choose a catorgory your most interested below.</p>
                             <select name="cat" id="cat">
                                 <option value="0">Select a Catagory</option>
                                 <option value="1">Entertainment</option>
@@ -50,17 +51,17 @@
                                 <option value="3">Educational</option>
                             </select><br><br>
 
-                            <label for="password1">password</label>
+                            <label for="password1">Choose Your Password</label>
                             <input type="password" name="password1" placeholder="password" required><br><br>
 
-                            <label for="password2">password again</label>
+                            <label for="password2">Now Enter YOur Password Again (just to be sure)</label>
                             <input type="password" name="password2" placeholder="password again" required><br><br>
 
-                            <button type="submit">submit</button>
+                            <button type="submit">Create my Account!</button>
                         </form>
 
                         <p id="err"></p><br>
-
+                        <!--Can we add an account has been created confirmation??-->
                     </div>
                 </div>
             </div>
@@ -70,7 +71,7 @@
                 <div class="card mainBox m-3 p-2 col col-lg-12">
                     <div class="card-header m-3 p-2">
                         
-                        <a href="/login">Go to login</a>
+                        <a href="/login">Return to login page</a>
                         
                     </div>
                 </div>
