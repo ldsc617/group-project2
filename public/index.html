@@ -23,12 +23,14 @@
             <div class="row">
                 <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center ">
                     <header>
+                        <!-- The text below should be replaced with our logo-->
                         <h1>Welcome to PorK!</h1>
                     </header>
                 </div>
             </div>
         </div>
-        
+
+        <!-- So far everything on this page is contained in one card. Should this be changed?? -->
         <div class="container">
             <div class="row">
                 <div class="card mainBox m-3 p-2 col" id="profile">
@@ -36,10 +38,13 @@
                         <h3>Hi <span id="name"></span>, What's your question today?</h3>
                     </div>
                     <div class="card-body">
+                        <!--New user instructions ould be replaced with different text-->
                         <h5>New to the Site? <br> No Problem! <br></h5>
                         <h5>Type in your Question Below to ask the Community a Question!</h5>
+                        <!--Should we display a dummy question in the box that will clear as soon as the user begings typing?-->
                         <br><input type="text" id="question"><br>
-                        <br><h5>Now select the catagory and your done!</h5><br>
+                        <br>
+                        <h5>Now select the catagory and your done!</h5><br>
                         <select id="cat">
                             <option value="0">Select a Catagory</option>
                             <option value="1">Entertainment</option>
@@ -47,6 +52,7 @@
                             <option value="3">Educational</option>
                         </select>
                         <br><br><button id="sendQuestion">Submit Question</button><br><br>
+                        <!--We should add some sort of confirmation message when something is submitted-->
                         <p id="err"></p><br>
                         <div class="container">
                             <div class="row">
@@ -76,16 +82,26 @@
         </div>
 
         <div class="container">
-            <div id="otherSide">
-                <button id="toProfile">Click me to return homepage</button>
+            <div class="row" id="otherSide">
+                <div class="card mainBox m-3 p-2 col">
+                        <div class="card-header m-1 text-secondary font-weight-bold">
+                                <!--Optional text for card header displayed below-->
+                                <h3> Here's all the Questions in this Catagory from other Users.</h3>
+                            </div>
+                            <br><button id="toProfile">Click me to return homepage</button><br>
 
 
-                <p>Below should show other user's questions!</p>
+                        <h5>Is there a way to display the catagory currently selected here?</h5>
+                        <h6>Below this line the verious questions will display</h6>
 
-                <section id="otherQuestions">
+                        <br><section id="otherQuestions">
 
-                </section>
+                        </section>
+                        <br>
+                        <button id="toProfile">Click me to return homepage</button>
+                    </div>
 
+                </div>
             </div>
         </div>
 
