@@ -33,13 +33,13 @@
             <div class="row">
                 <div class="card mainBox m-3 p-2 col" id="profile">
                     <div class="card-header m-1 text-secondary font-weight-bold">
-                        <h1>Hi <span id="name"></span>, What's your question today?</h1>
+                        <h3>Hi <span id="name"></span>, What's your question today?</h3>
                     </div>
                     <div class="card-body">
-                        <h2>Type in your Question Below to ask the Community a Question!</h2>
-                        <input type="text" id="question">
-                        <h5>New to the Site? <br> No Problem! <br> Once you've entered your question select the catagory and your done!</h5>
-
+                        <h5>New to the Site? <br> No Problem! <br></h5>
+                        <h5>Type in your Question Below to ask the Community a Question!</h5>
+                        <br><input type="text" id="question"><br>
+                        <br><h5>Now select the catagory and your done!</h5><br>
                         <select id="cat">
                             <option value="0">Select a Catagory</option>
                             <option value="1">Entertainment</option>
@@ -50,10 +50,14 @@
                         <p id="err"></p><br>
                         <div class="container">
                             <div class="row">
+                                <h5>Here are the questions you've asked so far.</h5>
                                 <section id="display"></section>
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <!--Does this change Catagories change the view of 
+                        the questions the user has asked???-->
                     <p>Change Categories</p>
                     <select id="catChange">
                         <option value="0">Select a Catagory</option>
@@ -61,8 +65,10 @@
                         <option value="2">Advice</option>
                         <option value="3">Educational</option>
                     </select>
+                    <br>
                     <button id="change">Change Category</button>
-                    <button id="others">Click me to Show other's questions</button><br><br>
+                    <br>
+                    <button id="others">Click me to Show Other User's Questions</button><br><br>
                 </div>
 
 
