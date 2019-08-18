@@ -37,7 +37,7 @@
                         <!--Optional text forcard header displayed below including the current logged in user's name-->
                         <h1>Hi <span id="name"></span>, Here's the Question you selected.</h1>
                     </div>
-                    <div class="card-body">
+                    <div id="questionHere" class="card-body">
                         <!--This section should display the post the user would
                             like to see the comments on-->
                     </div>
@@ -52,10 +52,24 @@
                             <!--Optional text for card header displayed below-->
                             <h1> Here's the comments on the above Question you selected.</h1>
                         </div>
-                        <div class="card-body">
+                        <div id="allComments" class="card-body">
                             <!--This section should display the comments all users have 
                                 have posted in regards to the above question-->
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="card mainBox m-3 p-2 col col-lg-12">
+                    <div class="card-header m-3 p-2">
+
+                        <label for="comment">comment</label>
+                        <input id="userInput" type="text" name="comment">
+                        <button id="postComment">Submit</button>
+                        
                     </div>
                 </div>
             </div>
@@ -71,7 +85,6 @@
                             <!-- <a href="/login">Go to login</a> -->
 
                             <!--Also below is a button to redirect the users to the All Questions Main view-->
-                            <button id="others">Click me to (go back to) Show other's questions</button><br><br>
                             
                         </div>
                     </div>
@@ -87,6 +100,34 @@
     
     </div>
 
-</body>
+<script>
 
+var num = window.location.pathname.split("/").reverse();
+
+$.get("/api/post/"+num, function(res){
+    console.log(res)
+    $("#questionHere").text(res.question)
+})
+
+$.get("/all/comments/"+num, function(res){
+    for(i = 0; i < res.length; i++){
+        var cp = $("<p>").text(res[i].comment + " From " + res[i].User.nameX );
+        $("#allComments").append(cp);
+    }
+    console.log(res);
+})
+
+$("#toProfile").on("click", function(){
+    window.location.href = "/";
+})
+
+$("#postComment").on("click", function(){
+    var send = {comment: $("#userInput").val()};
+    $.post("/comment/post/"+num, send, function(res){
+
+    })
+})
+
+</script>
+</body>
 </html>
