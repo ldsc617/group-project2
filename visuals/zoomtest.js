@@ -196,7 +196,7 @@ function dashboard(id, fData) {
         pC = pieChart(tF), // create the pie-chart.
         leg = legend(tF);  // create the legend.
 }
-d3.json('zoomdata.json', function (err, data) {
+d3.json('./zoomdata.json', function (err, data) {
     console.log(data);
     dashboard('#dashboard', data);
 });
