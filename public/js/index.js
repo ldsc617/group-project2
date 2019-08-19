@@ -20,6 +20,7 @@ function next(id) {
 
 function next2(cat) {
   console.log(cat);
+  console.log(typeof cat);
   $.get("/api/all/" + cat, function(res) {
     console.log(res);
     for (i = 0; i < res.length; i++) {
@@ -56,9 +57,11 @@ $("#change").on("click", function() {
       url: "/change/" + catc,
       method: "PUT"
     }).then(function(back) {
-      console.log(back);
-      next2(back);
-      window.location.reload();
+      console.log(back.category);
+      console.log(typeof back.category);
+      $("#otherQuestions").empty();
+      next2(back.category);
+      // window.location.reload();
     });
   } else {
     $("#err").text("Please select a category");

@@ -19,7 +19,7 @@ module.exports = function(app) {
         // console.log(all[0].dataValues.category);
         // console.log(all[0].User.dataValues);
         for (i = 0; i < all.length; i++) {
-          if (all[i].dataValues.category == req.session.user.cat){
+          if (all[i].category == req.params.cat){
             allx.push({
               QID: all[i].id,
               question: all[i].question,
