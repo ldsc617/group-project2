@@ -118,6 +118,7 @@ module.exports = function(app) {
     })
     .then(function(data){
       console.log(data)
+      res.json(data);
     })
   })
 
