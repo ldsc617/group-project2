@@ -46,96 +46,91 @@
         </div>
 
         <div class="container">
+            <div class="row">
+                <div class="card mainBox m-3 p-2 col" id="profile">
+                    <div class="card-header m-1 text-secondary font-weight-bold">
+                        <!--Optional text for card header displayed below-->
+                        <h1> Here's the comments on the above Question you selected.</h1>
+                    </div>
 
-                <div class="row">
-                    <div class="card mainBox m-3 p-2 col" id="profile">
-                        <div class="card-header m-1 text-secondary font-weight-bold">
-                            <!--Optional text for card header displayed below-->
-                            <h1> Here's the comments on the above Question you selected.</h1>
-                        </div>
-                        <div id="allComments" class="card-body">
-                            <!--This section should display the comments all users have 
-
+                    <div id="allComments" class="card-body">
+                        <!--This section should display the comments all users have 
                                 have posted in regards to the above question-->
+                                <!--Can we have a if no comments found insert "Sorry now comment's yet" or something like that?-->
+                        <div class="container m-3 p-2">
+                            <div class="row">
+                                <label for="comment">Add a Answer/Comment:</label>
+                                <div class="container m-3 p-2">
+                                    <div class="row">
+                                        <input id="userInput" type="text" name="comment">
+                                        <button id="postComment">Submit</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="container m-3 p-2">
+                            <div class="row">
+
+                                <button id="toProfile">Click me to return homepage</button>
+
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
+        
+        
+        <!--Log out button below-->
+        
         <div class="container">
             <div class="row">
                 <div class="card mainBox m-3 p-2 col col-lg-12">
                     <div class="card-header m-3 p-2">
-
-                        <label for="comment">comment</label>
-                        <input id="userInput" type="text" name="comment">
-                        <button id="postComment">Submit</button>
-                        
+                        <button id="logout">Logout</button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="container">
-                <div class="row">
-                    <div class="card mainBox m-3 p-2 col col-lg-12">
-                        <div class="card-header m-3 p-2">
-                            <!--If the first button below doesnt work try changing the reference 
-
-                                link on the second commented out button to re direct user back to the home page-->
-                        <button id="toProfile">Click me to return homepage</button>
-                        <!-- <a href="/login">Go to login</a> -->
-
-
-                            <!--Also below is a button to redirect the users to the All Questions Main view-->
-                            
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--Log out button below-->
-
-    <div class="container">
-        <button id="logout">Logout</button>
+        
     </div>
 
 
-    </div>
 
-<script>
+    <script>
 
-var num = window.location.pathname.split("/").reverse();
+        var num = window.location.pathname.split("/").reverse();
 
-$.get("/api/post/"+num, function(res){
-    console.log(res)
-    $("#questionHere").text(res.question)
-})
+        $.get("/api/post/" + num, function (res) {
+            console.log(res)
+            $("#questionHere").text(res.question)
+        })
 
-$.get("/all/comments/"+num, function(res){
-    for(i = 0; i < res.length; i++){
-        var cp = $("<p>").text(res[i].comment + " From " + res[i].User.nameX );
-        $("#allComments").append(cp);
-    }
-    console.log(res);
-})
+        $.get("/all/comments/" + num, function (res) {
+            for (i = 0; i < res.length; i++) {
+                var cp = $("<p>").text(res[i].comment + " From " + res[i].User.nameX);
+                $("#allComments").append(cp);
+            }
+            console.log(res);
+        })
 
-$("#toProfile").on("click", function(){
-    window.location.href = "/";
-})
+        $("#toProfile").on("click", function () {
+            window.location.href = "/";
+        })
 
-$("#postComment").on("click", function(){
-    var send = {comment: $("#userInput").val()};
-    $.post("/comment/post/"+num, send, function(res){
+        $("#postComment").on("click", function () {
+            var send = { comment: $("#userInput").val() };
+            $.post("/comment/post/" + num, send, function (res) {
 
-    })
-})
+            })
+        })
 
-</script>
+    </script>
 </body>
+
 </html>
