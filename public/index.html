@@ -39,40 +39,55 @@
                     </div>
                     <div class="card-body">
                         <!--New user instructions ould be replaced with different text-->
-                        <h5>New to the Site? <br> No Problem! <br></h5>
+                        <h5>New to the Site? No Problem! <br></h5>
+                        <br>
                         <h5>Type in your Question Below to ask the Community a Question!</h5>
-                        <!--Should we display a dummy question in the box that will clear as soon as the user begings typing?-->
+                        <!--Should we display a dummy question in the box that will clear as soon as the user begings typing?
+                        or is ther a way to make this a bigger text box?-->
                         <br><input type="text" id="question"><br>
                         <br>
                         <h5>Now select the category and your done!</h5><br>
-                        <select id="cat">
-                            <option value="0">Select a Category</option>
-                            <option value="1">Entertainment</option>
-                            <option value="2">Advice</option>
-                            <option value="3">Educational</option>
-                        </select>
-                        <br><br><button id="sendQuestion">Submit Question</button><br><br>
-                        <!--We should add some sort of confirmation message when something is submitted-->
+                        <div class="container">
+                            <div class="row">
+                                <select id="cat">
+                                    <option value="0">Select a Category</option>
+                                    <option value="1">Entertainment</option>
+                                    <option value="2">Advice</option>
+                                    <option value="3">Educational</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="container m-3 p-2">
+                            <div class="row">
+                                <button id="sendQuestion">Submit Question</button><br><br>
+                                <!--We should add some sort of confirmation message when something is submitted-->
+                            </div>
+                        </div>
                         <p id="err"></p><br>
                         <div class="container">
                             <div class="row">
                                 <h5>Here are the questions you've asked so far.</h5>
                             </div>
-                            <div class="row">
-                            <h6><section id="display"></section></h6>
-                                
+                            <div class="container m-3 p-2">
+                                <div class="row">
+                                    <h6>
+                                        <section id="display"></section>
+                                    </h6>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <br>
-                    <br>
-                    <button id="others">Click me to Show Other User's Questions</button><br><br>
+                    <div class="container m-3 p-2">
+                        <div class="row">
+                            <button id="others">Click me to Show Other User's Questions</button>
+                        </div>
+                    </div>
                 </div>
-                
-                
+
+
             </div>
         </div>
-        
+
         <div class="container">
             <div class="row" id="otherSide">
                 <div class="card mainBox m-3 p-2 col">
@@ -91,31 +106,34 @@
                     </select>
                     <br>
                     <button id="change">Change Category</button>
-                            <br><button id="toProfile">Click me to return homepage</button><br>
+                    <br><button id="toProfile">Click me to return homepage</button><br>
 
 
-                        <h5>Is there a way to display the category currently selected here?</h5>
-                        <h6>Below this line the verious questions will display</h6>
+                    <h5>Is there a way to display the category currently selected here?</h5>
+                    <h6>Below this line the verious questions will display</h6>
 
-                        <br><section id="otherQuestions">
+                    <br>
+                    <section id="otherQuestions">
 
-                        </section>
-                        <br>
-                        <!-- This additional button at the bottom of the page does not currently work
+                    </section>
+                    <br>
+                    <!-- This additional button at the bottom of the page does not currently work
                             <button id="toProfile">Click me to return homepage</button> -->
-                    </div>
-
                 </div>
+
             </div>
         </div>
-
-
-        <div class="container">
-            <button id="logout">Logout</button>
+        
+        
+        <div class="container m-3 p-2">
+            <div class="row">
+                <button id="logout">Logout</button>
+            </div>
         </div>
-
+        
     </div>
-
+</div>
+    
     </div>
 
     <script src="index.js"></script>
