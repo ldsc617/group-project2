@@ -101,7 +101,7 @@ module.exports = function(app) {
       include: db.comments
     })
     .then(function(data){
-      console.log(data.dataValues);
+      // console.log(data.dataValues);
       res.json(data);
     })
   })
@@ -115,7 +115,7 @@ module.exports = function(app) {
       UserId: req.session.user.id
     })
     .then(function(data){
-      console.log(data)
+      // console.log(data)
       res.json(data);
     })
   })
