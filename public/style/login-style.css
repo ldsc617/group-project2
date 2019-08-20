@@ -15,94 +15,17 @@ body, html {
     max-width: 50%;
 } */
 
-#day_and_time{
-	float:right;
-	width:auto;
-	padding-top:19px;
-	padding-bottom:15px;
-}
-
-.ne_top_header_main_wrapper{
-	float:left;
-	width:100%;
-	background:#292845;
-	height:58px;
-	border-bottom:1px solid rgba(255, 255, 255, 0.1);
-}
-.ne_left_sec_main_wrapper{
-	float:left;
-	width:30%;
-}
-.ne_top_about_btn a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    transition: all 0.5s;
-}
-.ne_top_about_btn{
-	float:left;
-	width:auto;
-	    
-}
-.ne_top_about_btn a{
-	font-size:14px;
-	color:#ffffff;
-	float:left;
-	padding-top:19px;
-	padding-bottom:20px;
-	font-family: 'Montserrat', sans-serif;
-	text-transform:uppercase;
-	font-weight:500;
-	border-left: 1px solid rgba(255, 255, 255, 0.1);
-	    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: 20px;
-	  -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    transition: all 0.5s;
-}
-
-.ne_right_sec_main_wrapper{
-	float:left;
-	width:70%;
-}
-
-.ne_right_sec_main_wrapper ul{
-	float:right;
-}
-.ne_right_sec_main_wrapper li{
-	float:left;
-}
-.ne_right_sec_main_wrapper li a{
-	float:left;
-	padding:20px;
-	border-left:1px solid rgba(255, 255, 255, 0.1);
-	border-right:1px solid rgba(255, 255, 255, 0.1);
-	font-size:14px;
-	font-family: 'Montserrat', sans-serif;
-	text-transform:uppercase;
-	color:#ffffff;
-	-webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    transition: all 0.5s;
-}
-.ne_right_sec_main_wrapper li:last-child a:hover {
-    background: transparent;
-}
-
-
 
 .login-bg {
-    background: rgba(41,40,69, 0.2);
+    background: rgba(0,0,0, 0.2);
     color: aliceblue;
     margin-bottom: 2%;
+    max-width: 80%;
+    margin: auto;
+}
+
+#returnBtn{
+    /* margin-top: 2%; */
 }
 
 .btn{
@@ -111,8 +34,20 @@ body, html {
 }
 
 #navbar-bg {
-    background: rgba(44, 13, 102, 0.2);
+    background: rgba(8,48,64, 0.4);
     margin-bottom:2%;
+}
+
+.logbtns{
+    /* padding-left: 20%; */
+}
+
+.btn {
+    /* margin-bottom: 5%; */
+}
+
+.returnBtn{
+
 }
 
 .boxTitleTxt{
@@ -120,14 +55,25 @@ display: block;
 align-content: center;
 }
 
+ input{
+    width: 100%;
+}
+
 #newLoginBox {
     padding: 2%;
 }
 
-.ne_top_header_main_wrapper{
-float: left;
-width: 100%;
-background: #292845;
-height: 58px;
-border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+@media screen and (min-width: 320px){
+.logbtns{
+    margin-left: 5%;
+}
+#porkLogo{
+    margin-left: 10%;
+}
+#createBtn{
+    margin-left: 8%;
+}
+#returnBtn{
+    margin-top: 2%;
+}
 }
