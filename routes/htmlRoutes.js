@@ -2,7 +2,6 @@ var db = require("../models");
 var path = require("path");
 
 module.exports = function(app) {
-
   app.get("/", function(req, res) {
     if (!req.session.user) {
       return res.redirect("/login");
@@ -33,10 +32,4 @@ module.exports = function(app) {
     }
     res.sendFile(path.join(__dirname, "../public/comment.html")); //("create")
   });
-
 };
-
-
-// app.get("/api/post/:id", function(req, res){
-    
-// })
