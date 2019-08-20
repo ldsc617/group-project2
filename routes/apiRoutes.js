@@ -14,29 +14,24 @@ module.exports = function(app) {
         include: [db.Users]
       })
       .then(function(all) {
-        // console.log(all);
-        // console.log(all[0].User.dataValues.nameX);
-        // console.log(all[0].dataValues.User.dataValues.category);
+        // console.log(all[0])
         var allx = [];
+        // console.log(all[0].dataValues.category);
+        // console.log(all[0].User.dataValues);
         for (i = 0; i < all.length; i++) {
-          if (all[i].category == req.session.user.cat){
+          if (all[i].category == req.params.cat){
             allx.push({
+              QID: all[i].id,
               question: all[i].question,
               name: all[i].User.dataValues.nameX
-              // cat: all[i].dataValues.User.dataValues.category
             });
           }
         }
-        console.log(allx)
+        // console.log(allx)
         res.json(allx);
       });
   });
 
-  // Here we add an "include" property to our options in our findOne query
-  // We set the value to an array of the models we want to include in a left outer join
-  // In this case, just db.Post
-  //
-  // ( it has been tested and works )
   app.get("/api/User/:id", function(req, res) {
     db.posts
       .findAll({
@@ -95,45 +90,50 @@ module.exports = function(app) {
         }
       }
     ).then(function(data) {
-      res.json(data);
+      res.json({category: category});
     });
   });
+  
+  // for comments
 
-  // and now use the same example code below for creating a post
-  // this example code is also missing a put/ update request. Would we like to add one to allow
-  // editing/ updating posts? Im going to assume yes
+  app.get("/api/post/:id", function(req, res){
+    db.posts.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: db.comments
+    })
+    .then(function(data){
+      // console.log(data.dataValues);
+      res.json(data);
+    })
+  })
 
-  // app.get("/api/examples", function(req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.json(dbExamples);
-  //   });
-  // });
+  app.post("/comment/post/:pid", function(req, res){
+    var comment = req.body.comment;
+    console.log(req.params.pid.split(",")[0]);
+    db.comments.create({
+      comment: comment,
+      postId: req.params.pid.split(",")[0],
+      UserId: req.session.user.id
+    })
+    .then(function(data){
+      // console.log(data)
+      res.json(data);
+    })
+  })
 
-  // Create a new example
-  //
-  // app.post("/api/examples", function(req, res) {
-  //   db.Example.create(req.body).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
+  app.get("/all/comments/:id", function(req, res){
+    db.comments.findAll({
+      where: {
+        postId: req.params.id
+      },
+      include: db.Users
+    })
+    .then(function(data){
+      // console.log(data)
+      res.json(data)
+    })
+  })
 
-  // Delete an example by id
-  //
-  // app.delete("/api/examples/:id", function(req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(
-  //     dbExample
-  //   ) {
-  //     res.json(dbExample);
-  //   });
-  // });
 };
-
-// Would we need a put request here as well for updating the author to admin status?
-// and if so whould something like this work?
-//// app.put("/api/Users/:id", function(req, res) {
-////   db.Users.destroy({ where: { id: req.params.id } }).then(function(
-////     dbUsers
-////   ) {
-////     res.json(dbUsers);
-////   });
-//// });

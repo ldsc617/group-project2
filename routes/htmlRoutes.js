@@ -1,16 +1,7 @@
-// *********************************************************************************
-// html-routes.js - this file offers a set of routes for sending users to the various html pages
-// *********************************************************************************
-
-//path exits in models can I use it here?
 var db = require("../models");
 var path = require("path");
 
 module.exports = function(app) {
-  // at route / get and render index.handlebars page
-  // Example is a var found in example.js I believe this provides the sequlized database data??
-
-  // Still not sure where msg: "welcome come into play"
 
   app.get("/", function(req, res) {
     if (!req.session.user) {
@@ -26,13 +17,26 @@ module.exports = function(app) {
     if (req.session.user) {
       return res.redirect("/");
     }
-    res.sendFile(path.join(__dirname, "../public/create.html")); //("create")
+    res.sendFile(path.join(__dirname, "../public/create.html"));
   });
 
   app.get("/login", function(req, res) {
     if (req.session.user) {
       return res.redirect("/");
     }
-    res.sendFile(path.join(__dirname, "../public/login.html")); //("login")
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
+
+  app.get("/post/:id", function(req, res) {
+    if (!req.session.user) {
+      return res.redirect("/login");
+    }
+    res.sendFile(path.join(__dirname, "../public/comment.html"));
+  });
+
 };
+
+
+// app.get("/api/post/:id", function(req, res){
+    
+// })
