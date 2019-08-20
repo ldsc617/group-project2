@@ -57,9 +57,10 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="container m-3 p-2">
+                        <div class="container  p-2">
                             <div class="row">
-                                <button id="sendQuestion">Ask the PorK Community!</button><br><br>
+                                <button class="btn-block btn-lg btn-secondary" id="sendQuestion">Ask the PorK
+                                    Community!</button><br><br>
                                 <!--We should add some sort of confirmation message when something is submitted-->
                             </div>
                         </div>
@@ -79,7 +80,8 @@
                     </div>
                     <div class="container m-3 p-2">
                         <div class="row">
-                            <button id="others">Click Me to See Other PorKer's Questions</button>
+                            <button class="btn-lg btn-secondary" id="others">Click Me to See Other PorKer's
+                                Questions</button>
                         </div>
                     </div>
                 </div>
@@ -97,42 +99,46 @@
                     </div>
                     <!--Does this change Catagories change the view of 
                         the questions the user has asked???-->
-                    <div class="container m-3 p-2">
-                        <div class="row">
-                            <h5>Change Categories:</h5>
-                            <select id="catChange" class="m-1 p-3">
-                                <option value="0">Select a Category</option>
-                                <option value="1">Entertainment</option>
-                                <option value="2">Advice</option>
-                                <option value="3">Educational</option>
-                            </select>
-                            <div class="container m-3 p-2">
-                                <div class="row">
-                                    <button id="change">Change Category</button>
+                    <div class="card-body">
+                        <div class="container m-1 p-3">
+                            <div class="row">
+                                <h5>Change Categories:</h5>
+                                <select id="catChange" class="m-1 p-3">
+                                    <option value="0">Select a Category</option>
+                                    <option value="1">Entertainment</option>
+                                    <option value="2">Advice</option>
+                                    <option value="3">Educational</option>
+                                </select>
+                                <div class="container m-1">
+                                    <div class="row">
+                                        <button class="btn-block btn-lg btn-secondary" id="change">Change Category</button>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="container m-3 p-2">
+                            <div class="row">
+                                <h5>Here are the newest questions on PorK!<br><br> Click on a Question to add an
+                                    answer/comment!</h5>
+                            </div>
+                        </div>
+
+                        <div class="container m-3 p-2">
+                            <div class="row">
+                                <section id="otherQuestions"></section>
+                            </div>
+                        </div>
+
+                        <div class="container m-1 p-3">
+                            <div class="row">
+                                <button class="btn-block btn-lg btn-secondary" id="toProfile">Click me to return
+                                    homepage</button><br>
                             </div>
                         </div>
                     </div>
 
-                    <div class="container m-3 p-2">
-                        <div class="row">
-                            <h5>Here are the newest questions on PorK!<br> Click on a Question to add an answer/comment!</h5>
-                        </div>
-                    </div>
-
-                    <div class="container m-3 p-2">
-                        <div class="row">
-                            <section id="otherQuestions"></section>
-                        </div>
-                    </div>
-
-                    <div class="container m-3 p-2">
-                        <div class="row">
-                            <button id="toProfile">Click me to return homepage</button><br>
-                        </div>
-                    </div>
                 </div>
-
             </div>
         </div>
 
@@ -141,7 +147,7 @@
             <div class="row">
                 <div class="card mainBox m-3 p-2 col col-lg-12">
                     <div class="card-header m-3 p-2">
-                        <button id="logout">Logout</button>
+                        <button class="btn-block btn-lg btn-secondary" id="logout">Logout</button>
                     </div>
                 </div>
 
