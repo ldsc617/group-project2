@@ -4,7 +4,7 @@ var session = require("express-session");
 var flash = require("connect-flash");
 var path = require("path");
 
-var db = require("./models");
+var db = require("../../models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -13,7 +13,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get("/index.js", function(req, res) {
+app.get("/index.js", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/js/index.js"));
 });
 
@@ -21,7 +21,7 @@ app.get("/index.js", function(req, res) {
 //   res.sendFile(path.join(__dirname, "/public/js/comment.js"));
 // });
 
-app.get("/styles.css", function(req, res) {
+app.get("/styles.css", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/styles/styles.css"));
 });
 
@@ -39,9 +39,9 @@ app.use(
 app.use(flash());
 
 // Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
-require("./routes/sessionHandler")(app);
+require("../../routes/apiRoutes")(app);
+require("../../routes/htmlRoutes")(app);
+require("../../routes/sessionHandler")(app);
 
 var syncOptions = { force: false };
 
@@ -52,8 +52,8 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync(syncOptions).then(function () {
+  app.listen(PORT, function () {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,

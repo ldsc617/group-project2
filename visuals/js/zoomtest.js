@@ -1,9 +1,9 @@
 function dashboard(id, fData) {
     var barColor = 'steelblue';
-    function segColor(c) { return { low: "#807dba", mid: "#e08214", high: "#41ab5d" }[c]; }
+    function segColor(c) { return { timestamp: "#807dba", Question: "#e08214", QuestionAnswer: "#41ab5d" }[c]; }
 
     // compute total for each state.
-    fData.forEach(function (d) { d.total = d.freq.low + d.freq.mid + d.freq.high; });
+    fData.forEach(function (d) { d.total = d.timestamp + d.Question + d.QuestionAnswer; });
 
     // function to handle histogram.
     function histoGram(fD) {
@@ -41,8 +41,8 @@ function dashboard(id, fData) {
             .attr("width", x.rangeBand())
             .attr("height", function (d) { return hGDim.h - y(d[1]); })
             .attr('fill', barColor)
-            .on("mouseover", mouseover)// mouseover is defined below.
-            .on("mouseout", mouseout);// mouseout is defined below.
+            .on("mouseover", mouseover)// mouseover is defined bel/ow.
+            .on("mouseout", mouseout);// mouseout is defined bel/ow.
 
         //Create the frequency labels above the rectangles.
         bars.append("text").text(function (d) { return d3.format(",")(d[1]) })
@@ -185,7 +185,7 @@ function dashboard(id, fData) {
     }
 
     // calculate total frequency by segment for all state.
-    var tF = ['low', 'mid', 'high'].map(function (d) {
+    var tF = ['timestamp', 'Question', 'QuestionAnswer'].map(function (d) {
         return { type: d, freq: d3.sum(fData.map(function (t) { return t.freq[d]; })) };
     });
 
@@ -205,3 +205,68 @@ d3.json('./zoomdata.json', function (err, data) {
 //     console.log(data)
 // })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// PREV JSON DATA USED FOR TESTING
+
+// [
+//     { "State": "AL", "freq": { "l/ow": 4786, "m/id": 1319, "h/igh": 249 } }
+//     , { "State": "AZ", "freq": { "l/ow": 1101, "m/id": 412, "h/igh": 674 } }
+//     , { "State": "CT", "freq": { "l/ow": 932, "m/id": 2149, "h/igh": 418 } }
+//     , { "State": "DE", "freq": { "l/ow": 832, "m/id": 1152, "h/igh": 1862 } }
+//     , { "State": "FL", "freq": { "l/ow": 4481, "m/id": 3304, "h/igh": 948 } }
+//     , { "State": "GA", "freq": { "l/ow": 1619, "m/id": 167, "h/igh": 1063 } }
+//     , { "State": "IA", "freq": { "l/ow": 1819, "m/id": 247, "h/igh": 1203 } }
+//     , { "State": "IL", "freq": { "l/ow": 4498, "m/id": 3852, "h/igh": 942 } }
+//     , { "State": "IN", "freq": { "l/ow": 797, "m/id": 1849, "h/igh": 1534 } }
+//     , { "State": "KS", "freq": { "l/ow": 162, "m/id": 379, "h/igh": 471 } }
+// ]
