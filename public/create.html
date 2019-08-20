@@ -12,70 +12,105 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <!-- Font Awesome CSS Icons (For cool glyphicons) -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/login-style.css">
 </head>
 
 <body>
+        <div class="ne_top_header_main_wrapper">
+                <div class="container">
+                    <div class="ne_left_sec_main_wrapper">
+                        <div id="day_and_time">
+                            <p id="date">August 19, 2019</p>
+                        </div>
+                    </div>
+                    <div class="ne_right_sec_main_wrapper">
+                        <ul>
+                            <li class="hidden-xs"><a href="/login">login &nbsp;<i class="fa fa-user"></i></a>
+                            </li>
+                            <li><a href="#" class="second-nav-toggler mee">menu &nbsp;<i class="flaticon-text"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    <!-- Image and text -->
+<nav class="navbar navbar" id="navbar-bg">
+        <a class="navbar-brand" href="#">
+          <img src="/public/style/img/porK-logo.png" width="240" height="100" class="d-inline-block align-top" alt="">
+        </a>
+      </nav>
+        <!-- <nav class="navbar navbar-dark bg-dark"> -->
+                <!-- Navbar content -->
+              </nav>
+              
+              <!-- <nav class="navbar navbar-dark bg-primary"> -->
+                <!-- Navbar content -->
+              </nav>
+              
+              <!-- <nav class="navbar navbar-light" style="background-color: #e3f2fd;"> -->
+                <!-- Navbar content -->
+              </nav>
     <div class="container" id="bg">
         <div class="container">
             <div class="row">
-                <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center ">
-                    <header>
-                        <!--We should change this text to our logo here-->
-                        <h1>Welcome to PorK!</h1> 
+                <!-- <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center" > -->
                     
-                        <h3>New to the Site? <br> No Problem! <br> Just enter your information below to create your own account!</h3>
-                    </header>
+                    <!-- <header> -->
+                        <!--We should change this text to our logo here-->
+                        <!-- <h1>Welcome to PorK!</h1>  -->
+                    
+                        <!-- <h3>New to the Site? <br> No Problem! <br> Just enter your information below to create your own account!</h3> -->
+                    <!-- </header> -->
                 </div>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container login-bg">
             <div class="row">
-                <div class="card mainBox m-3 p-2 col col-lg-12">
+                <div class="card mainBox m-3 p-2 col col-lg-12 login-bg">
                     <div class="card-header m-1 text-secondary font-weight-bold">Create your Account!</div>
                     <div class="card-body m-3 p-2 col col-lg-12">
 
-
                         <form action="/create/account" method="POST">
-                            <label for="name">Your Name</label>
-                            <input type="text" name="name" placeholder="Full Name" required><br><br>
+                            
+                            <label for="name" class="boxTitleTxt">Your Name</label>
+                            <input type="text" name="name" placeholder="Full Name" required ><br><br>
 
-                            <label for="username">Your New Username</label>
+                            <label for="username"class="boxTitleTxt" >Pick a username</label>
                             <input type="text" name="username" placeholder="New username" required><br><br>
-                            <p>Choose a catorgory your most interested below.</p>
+                            <p>Choose a category your most interested below.</p>
                             <select name="cat" id="cat">
-                                <option value="0">Select a Catagory</option>
+                                <option value="0">Select a Category</option>
                                 <option value="1">Entertainment</option>
                                 <option value="2">Advice</option>
                                 <option value="3">Educational</option>
                             </select><br><br>
 
-                            <label for="password1">Choose Your Password</label>
+                            <label for="password1" class="boxTitleTxt">Choose Your Password</label>
                             <input type="password" name="password1" placeholder="password" required><br><br>
 
-                            <label for="password2">Now Enter Your Password Again (just to be sure)</label>
+                            <label for="password2" class="boxTitleTxt">Now Enter Your Password Again (just to be sure)</label>
                             <input type="password" name="password2" placeholder="password again" required><br><br>
 
-                            <button type="submit">Create my Account!</button>
+                            <button type="submit" class="btn btn-dark">Create my Account!</button>
                         </form>
 
                         <p id="err"></p><br>
                         <!--Can we add an account has been created confirmation??-->
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="card mainBox m-3 p-2 col col-lg-12">
-                    <div class="card-header m-3 p-2">
-                        
-                        <a href="/login">Return to login page</a>
-                        
+                <div class="container">
+                        <div class="row">
+                            <div class="card mainBox m-3 p-2 col col-lg-12 login-bg">
+                                <div class="card-header m-3 p-2">
+                                        <button class="btn" onclick="window.location.href = '/login';">Return to homepage</button>                                
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
             </div>
+            
         </div>
         
     </div>
