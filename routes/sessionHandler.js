@@ -81,7 +81,6 @@ function session(app) {
 
   // since the session holds the user id we will send that unique number to recieve it back to send the proper information
   app.get("/get/user", function(req, res) {
-    // console.log(req.session.user);
     return res.json(req.session.user);
   });
 

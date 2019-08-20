@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PorK Log-In</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <!-- Font Awesome CSS Icons (For cool glyphicons) -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />-->
+</head>
+
+<body>
+    <div class="container" id="bg">
+        <div class="container">
+            <div class="row">
+                <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center ">
+                    <header>
+                        <h1>Welcome to PorK!</h1>
+                        <h3> Enter your information to log in below!</h3>
+                        <br><h5>New to the Site?<br> No Problem!<br><br>Just click the link below to create your own account!</h5>
+                    </header>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="card mainBox m-3 p-2 col col-lg-12">
+                    <div class="card-header m-1 text-secondary font-weight-bold">Log In!</div>
+                    <div class="card-body m-3 p-2 col col-lg-12">
+                        <form action="/compare/users" method="POST">
+
+                            <label for="username">Username</label>
+                            <input type="text" name="username" placeholder="Username"><br><br>
+
+                            <label for="password">Password</label>
+                            <input type="password" name="password" placeholder="Password"><br><br>
+
+                            <button type="submit">Log In</button>
+
+                        </form>
+
+                        <p id="err"></p><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="card mainBox m-3 p-2 col col-lg-12">
+                    <div class="card-header m-3 p-2">
+                        
+                        <a href="/register">Click Here to Create an Account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        $.get("/login/errors", (res) => {
+            console.log(res);
+            $("#err").text(res);
+        })
+
+    </script>
+</body>
+
+</html>
