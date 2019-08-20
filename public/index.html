@@ -5,48 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PorK Homepage</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <title>PorK Create-a-User</title>
+
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <!-- Font Awesome CSS Icons (For cool glyphicons) -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />-->
+
+    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->    
+    <link rel="stylesheet" href="style/styles.css">
+    <script src="https://kit.fontawesome.com/2ad7f43d56.js"></script>
 </head>
 
 <body>
-    <div class="container" id="bg">
-        <div class="container">
-            <div class="row">
-                <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center ">
-                    <header>
-                        <!-- The text below should be replaced with our logo-->
-                        <h1>Welcome to PorK!</h1>
-                    </header>
+    <!-- Image and text -->
+    <nav class="navbar navbar" id="navbar-bg">
+            <a class="navbar-brand" href="/public/index.html">
+              <img src="/public/style/img/porK-logo.png" width="240" height="100" class="d-inline-block align-top" id="porkLogo" alt="">
+            </a>
+          </nav>
+        <div class="container" id="bg">
+            <div class="container">
+                <div class="row">
+                    </div>
                 </div>
             </div>
-        </div>
+
 
         <!-- So far everything on this page is contained in one card. Should this be changed?? -->
         <div class="container">
             <div class="row">
-                <div class="card mainBox m-3 p-2 col" id="profile">
+
+                <div class="card mainBox col" id="profile">
                     <div class="card-header m-1 text-secondary font-weight-bold">
-                        <h3>Hi <span id="name"></span>, What's your question today?</h3>
+                        <h3><i>porK</i> away!</h3>
+                        <p>Ask your question below</p>
                     </div>
                     <div class="card-body">
-                        <!--New user instructions ould be replaced with different text-->
-                        <h5>New to the Site? No Problem! <br></h5>
-                        <br>
-                        <h5>Type in your Question Below to ask the Community a Question!</h5>
+                        <h5>Type in your question Below to ask the community a question!</h5>
                         <!--Should we display a dummy question in the box that will clear as soon as the user begings typing?
                         or is ther a way to make this a bigger text box?-->
-                        <br><input type="text" id="question"><br>
-                        <br>
-                        <h5>Now select the category and your done!</h5><br>
+                        <input type="text" id="question" placeholder="Why do you bake cookies, but cook bacon?">
+                        <h5>Now select the category and your done!</h5>
+
                         <div class="container">
                             <div class="row">
                                 <select id="cat">
@@ -57,18 +61,24 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="container m-3 p-2">
+
+                        <div class="container">
                             <div class="row">
-                                <button id="sendQuestion">Ask the PorK Community!</button><br><br>
+                                    <button id="sendQuestion" type="button" class="btn btn-default" aria-label="Left Align">Get Cookin'
+                                            <span class="fas fa-bacon"></span>
+                                            </button>
+
                                 <!--We should add some sort of confirmation message when something is submitted-->
                             </div>
                         </div>
                         <p id="err"></p><br>
-                        <div class="container">
+
+                        <div class="container" id="myQuestions">
                             <div class="row">
                                 <h5>Here are the questions you've asked so far.</h5>
                             </div>
-                            <div class="container m-3 p-2">
+                            <div class="container">
+
                                 <div class="row">
                                     <h6>
                                         <section id="display"></section>
@@ -77,13 +87,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container m-3 p-2">
-                        <div class="row">
-                            <button id="others">Click Me to See Other PorKer's Questions</button>
-                        </div>
-                    </div>
-                </div>
-
 
             </div>
         </div>
@@ -106,7 +109,9 @@
                                 <option value="2">Advice</option>
                                 <option value="3">Educational</option>
                             </select>
-                            <div class="container m-3 p-2">
+
+                            <div class="container">
+
                                 <div class="row">
                                     <button id="change">Change Category</button>
                                 </div>
@@ -114,19 +119,25 @@
                         </div>
                     </div>
 
-                    <div class="container m-3 p-2">
+
+                    <div class="container">
+
                         <div class="row">
                             <h5>Here are the newest questions on PorK!<br> Click on a Question to add an answer/comment!</h5>
                         </div>
                     </div>
 
-                    <div class="container m-3 p-2">
+
+                    <div class="container">
+
                         <div class="row">
                             <section id="otherQuestions"></section>
                         </div>
                     </div>
 
-                    <div class="container m-3 p-2">
+
+                    <div class="container">
+
                         <div class="row">
                             <button id="toProfile">Click me to return homepage</button><br>
                         </div>
@@ -139,8 +150,10 @@
 
         <div class="container">
             <div class="row">
-                <div class="card mainBox m-3 p-2 col col-lg-12">
-                    <div class="card-header m-3 p-2">
+
+                <div class="card mainBox col col-lg-12">
+                    <div class="card-header">
+
                         <button id="logout">Logout</button>
                     </div>
                 </div>
