@@ -77,3 +77,39 @@ align-content: center;
     margin-top: 2%;
 }
 }
+
+@media screen and (min-width: 480px){
+    .logbtns{
+        margin-left: 25%;
+    }
+    #porkLogo{
+        margin-left: 45%;
+    }
+    #createBtn{
+        margin-left: 8%;
+    }
+    #returnBtn{
+        margin-top: 2%;
+    }
+    }
+
+@media screen and (min-width: 768px){
+        #returnBtn{
+            margin: 0 auto;
+        }
+        #porkLogo{
+            margin-left: 100%;
+        }
+        .logbtns{
+            margin-left: 10%;
+        }
+    }
+
+@media screen and (min-width: 992px){
+        #returnBtn{
+            margin: 0 auto;
+        }
+        .logbtns{
+            margin-left: 25%;
+        }
+    }
