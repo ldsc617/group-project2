@@ -16,6 +16,7 @@ function next(id) {
         .attr("href", "/post/" + res[i].id)
         .text(res[i].question);
       $("#display").append(p);
+      $("#display").append("<br><br>");
     }
   });
 }
@@ -34,6 +35,7 @@ function next2(cat) {
           .attr("href", "/post/" + res[i].QID)
           .text(res[i].question);
         $("#otherQuestions").append(aHref);
+        $("#otherQuestions").append("<br><br>");
       }
     }
   });
