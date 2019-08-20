@@ -56,7 +56,7 @@
                     <div id="allComments" class="card-body">
                         <!--This section should display the comments all users have 
                                 have posted in regards to the above question-->
-                                <!--Can we have a if no comments found insert "Sorry now comment's yet" or something like that?-->
+                        <!--Can we have a if no comments found insert "Sorry now comment's yet" or something like that?-->
                         <div class="container m-3 p-2">
                             <div class="row">
                                 <label for="comment">Add a Answer/Comment:</label>
@@ -84,10 +84,10 @@
         </div>
 
 
-        
-        
+
+
         <!--Log out button below-->
-        
+
         <div class="container">
             <div class="row">
                 <div class="card mainBox m-3 p-2 col col-lg-12">
@@ -97,7 +97,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
 
@@ -105,7 +105,7 @@
     <script>
 
         var num = window.location.pathname.split("/").reverse();
-
+        console.log(num);
         $.get("/api/post/" + num, function (res) {
             console.log(res)
             $("#questionHere").text(res.question)
@@ -125,10 +125,17 @@
 
         $("#postComment").on("click", function () {
             var send = { comment: $("#userInput").val() };
-            $.post("/comment/post/" + num, send, function (res) {
-
-            })
+            $.post("/comment/post/" + num, send)
+                .then(function (res) {
+                    window.location.reload();
+                })
         })
+
+        $("#logout").on("click", function () {
+            $.post("/logout/user", function () {
+                window.location.href = "/login";
+            });
+        });
 
     </script>
 </body>

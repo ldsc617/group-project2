@@ -16,6 +16,8 @@ module.exports = function(app) {
       .then(function(all) {
         // console.log(all[0])
         var allx = [];
+        // console.log(all[0].dataValues.category);
+        // console.log(all[0].User.dataValues);
         for (i = 0; i < all.length; i++) {
           if (all[i].category == req.params.cat){
             allx.push({
@@ -35,7 +37,8 @@ module.exports = function(app) {
       .findAll({
         where: {
           UserId: req.session.user.id
-        }
+        },
+        include: [db.Users]
       })
       .then(function(dbUsers) {
         res.json(dbUsers);
@@ -69,7 +72,7 @@ module.exports = function(app) {
   });
 
   // Delete an User by id ==== Should this be moved for an admin function?
-  app.delete("/api/Users/:id", function(req, res) {
+  app.delete("/api/delete/Users/:id", function(req, res) {
     db.Users.destroy({ where: { id: req.params.id } }).then(function(dbUsers) {
       res.json(dbUsers);
     });
@@ -101,7 +104,7 @@ module.exports = function(app) {
       include: db.comments
     })
     .then(function(data){
-      console.log(data.dataValues);
+      // console.log(data.dataValues);
       res.json(data);
     })
   })
@@ -115,7 +118,8 @@ module.exports = function(app) {
       UserId: req.session.user.id
     })
     .then(function(data){
-      console.log(data)
+      // console.log(data)
+      res.json(data);
     })
   })
 
