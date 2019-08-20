@@ -1,6 +1,5 @@
 require("dotenv").config();
 var express = require("express");
-// var exphbs = require("express-handlebars");
 var session = require("express-session");
 var flash = require("connect-flash");
 var path = require("path");
@@ -17,6 +16,10 @@ app.use(express.json());
 app.get("/index.js", function(req, res) {
   res.sendFile(path.join(__dirname, "/public/js/index.js"));
 });
+
+// app.get("/comment.js", function(req, res) {
+//   res.sendFile(path.join(__dirname, "/public/js/comment.js"));
+// });
 
 app.get("/styles.css", function(req, res) {
   res.sendFile(path.join(__dirname, "/public/styles/styles.css"));

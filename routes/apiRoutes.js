@@ -1,41 +1,49 @@
 var db = require("../models");
-// var Op = require("sequelize").Op;
+var Op = require("sequelize").Op;
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Get all examples1 ex: use this for creating users/Authors ( it has been tested and works )
-  app.get("/api/all/:cat", function(req, res) {
+  app.get("/api/all/:cat", function (req, res) {
     db.posts
       .findAll({
         where: {
-          category: req.params.cat
-        }
-        // include: [db.Users]
+          UserId: {
+            [Op.not]: req.session.user.id
+          }
+        },
+        include: [db.Users]
       })
-      .then(function(all) {
-        res.json(all);
+      .then(function (all) {
+        // console.log(all[0])
+        var allx = [];
+        for (i = 0; i < all.length; i++) {
+          if (all[i].category == req.params.cat) {
+            allx.push({
+              QID: all[i].id,
+              question: all[i].question,
+              name: all[i].User.dataValues.nameX
+            });
+          }
+        }
+        // console.log(allx)
+        res.json(allx);
       });
   });
 
-  // Here we add an "include" property to our options in our findOne query
-  // We set the value to an array of the models we want to include in a left outer join
-  // In this case, just db.Post
-  //
-  // ( it has been tested and works )
-  app.get("/api/User/:id", function(req, res) {
+  app.get("/api/User/:id", function (req, res) {
     db.posts
       .findAll({
         where: {
           UserId: req.session.user.id
         }
-        // include: [db.Users]
       })
-      .then(function(dbUsers) {
+      .then(function (dbUsers) {
         res.json(dbUsers);
       });
   });
 
   // Create a new Question ( it has been tested and works )
-  app.post("/api/post", function(req, res) {
+  app.post("/api/post", function (req, res) {
     var question = req.body.question;
     var UserId = parseInt(req.body.UserID);
     var category = req.body.cat;
@@ -50,24 +58,24 @@ module.exports = function(app) {
           category: category,
           UserId: UserId
         })
-        .then(function(data) {
+        .then(function (data) {
           res.json(data);
         });
     }
   });
 
-  app.get("/question/errors", function(req, res) {
+  app.get("/question/errors", function (req, res) {
     res.send(req.flash("err3"));
   });
 
   // Delete an User by id ==== Should this be moved for an admin function?
-  app.delete("/api/Users/:id", function(req, res) {
-    db.Users.destroy({ where: { id: req.params.id } }).then(function(dbUsers) {
+  app.delete("/api/delete/Users/:id", function (req, res) {
+    db.Users.destroy({ where: { id: req.params.id } }).then(function (dbUsers) {
       res.json(dbUsers);
     });
   });
 
-  app.put("/change/:cat", function(req, res) {
+  app.put("/change/:cat", function (req, res) {
     var category = req.params.cat;
     db.Users.update(
       {
@@ -78,46 +86,51 @@ module.exports = function(app) {
           id: req.session.user.id
         }
       }
-    ).then(function(data) {
-      res.json(data);
+    ).then(function (data) {
+      res.json({ category: category });
     });
   });
 
-  // and now use the same example code below for creating a post
-  // this example code is also missing a put/ update request. Would we like to add one to allow
-  // editing/ updating posts? Im going to assume yes
+  // for comments
 
-  // app.get("/api/examples", function(req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.json(dbExamples);
-  //   });
-  // });
+  app.get("/api/post/:id", function (req, res) {
+    db.posts.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: db.comments
+    })
+      .then(function (data) {
+        // console.log(data.dataValues);
+        res.json(data);
+      })
+  })
 
-  // Create a new example
-  //
-  // app.post("/api/examples", function(req, res) {
-  //   db.Example.create(req.body).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
+  app.post("/comment/post/:pid", function (req, res) {
+    var comment = req.body.comment;
+    console.log(req.params.pid.split(",")[0]);
+    db.comments.create({
+      comment: comment,
+      postId: req.params.pid.split(",")[0],
+      UserId: req.session.user.id
+    })
+      .then(function (data) {
+        // console.log(data)
+        res.json(data);
+      })
+  })
 
-  // Delete an example by id
-  //
-  // app.delete("/api/examples/:id", function(req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(
-  //     dbExample
-  //   ) {
-  //     res.json(dbExample);
-  //   });
-  // });
+  app.get("/all/comments/:id", function (req, res) {
+    db.comments.findAll({
+      where: {
+        postId: req.params.id
+      },
+      include: db.Users
+    })
+      .then(function (data) {
+        // console.log(data)
+        res.json(data)
+      })
+  })
+
 };
-
-// Would we need a put request here as well for updating the author to admin status?
-// and if so whould something like this work?
-//// app.put("/api/Users/:id", function(req, res) {
-////   db.Users.destroy({ where: { id: req.params.id } }).then(function(
-////     dbUsers
-////   ) {
-////     res.json(dbUsers);
-////   });
-//// });

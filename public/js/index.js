@@ -12,7 +12,9 @@ function next(id) {
   $.get("/api/User/" + id, function(res) {
     console.log(res);
     for (i = 0; i < res.length; i++) {
-      var p = $("<p>").text(res[i].question);
+      var p = $("<a>")
+        .attr("href", "/post/" + res[i].id)
+        .text(res[i].question);
       $("#display").append(p);
     }
   });
@@ -20,14 +22,18 @@ function next(id) {
 
 function next2(cat) {
   console.log(cat);
+  console.log(typeof cat);
   $.get("/api/all/" + cat, function(res) {
     console.log(res);
     for (i = 0; i < res.length; i++) {
+      console.log("i am in here");
       if (res[i].UserId === parseInt(toPost)) {
         null;
       } else {
-        var p = $("<p>").text(res[i].question);
-        $("#otherQuestions").append(p);
+        var aHref = $("<a>")
+          .attr("href", "/post/" + res[i].QID)
+          .text(res[i].question);
+        $("#otherQuestions").append(aHref);
       }
     }
   });
@@ -44,6 +50,7 @@ $("#sendQuestion").on("click", function() {
     if (r === "You have to select a category") {
       $("#err").text(r);
     }
+    window.location.reload();
   });
 });
 
@@ -54,7 +61,11 @@ $("#change").on("click", function() {
       url: "/change/" + catc,
       method: "PUT"
     }).then(function(back) {
-      console.log(back);
+      console.log(back.category);
+      console.log(typeof back.category);
+      $("#otherQuestions").empty();
+      next2(back.category);
+      // window.location.reload();
     });
   } else {
     $("#err").text("Please select a category");
