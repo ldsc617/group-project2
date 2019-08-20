@@ -72,7 +72,7 @@ module.exports = function(app) {
   });
 
   // Delete an User by id ==== Should this be moved for an admin function?
-  app.delete("/api/Users/:id", function(req, res) {
+  app.delete("/api/delete/Users/:id", function(req, res) {
     db.Users.destroy({ where: { id: req.params.id } }).then(function(dbUsers) {
       res.json(dbUsers);
     });

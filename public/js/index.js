@@ -12,7 +12,9 @@ function next(id) {
   $.get("/api/User/" + id, function(res) {
     console.log(res);
     for (i = 0; i < res.length; i++) {
-      var p = $("<p>").text(res[i].question);
+      var p = $("<a>")
+        .attr("href", "/post/" + res[i].id)
+        .text(res[i].question);
       $("#display").append(p);
     }
   });
@@ -24,11 +26,13 @@ function next2(cat) {
   $.get("/api/all/" + cat, function(res) {
     console.log(res);
     for (i = 0; i < res.length; i++) {
-      console.log("i am in here")
+      console.log("i am in here");
       if (res[i].UserId === parseInt(toPost)) {
         null;
-      } else { // res[i].QID 
-        var aHref = $("<a>").attr("href", "/post/"+res[i].QID).text(res[i].question);
+      } else {
+        var aHref = $("<a>")
+          .attr("href", "/post/" + res[i].QID)
+          .text(res[i].question);
         $("#otherQuestions").append(aHref);
       }
     }

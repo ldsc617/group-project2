@@ -105,7 +105,7 @@
     <script>
 
         var num = window.location.pathname.split("/").reverse();
-
+        console.log(num);
         $.get("/api/post/" + num, function (res) {
             console.log(res)
             $("#questionHere").text(res.question)
@@ -127,7 +127,6 @@
             var send = { comment: $("#userInput").val() };
             $.post("/comment/post/" + num, send)
                 .then(function (res) {
-                    console.log("i am here")
                     window.location.reload();
                 })
         })
