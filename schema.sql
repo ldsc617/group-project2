@@ -11,7 +11,7 @@ CREATE TABLE Users (
 );
 USE porKdb;
 CREATE TABLE Posts (
-    PostsID INT NOT NULL AUTO_INCREMENT,
+    CreatePostsID INT NOT NULL AUTO_INCREMENT,
     fkUserID int,
     FOREIGN KEY (fkUserID) REFERENCES Users(UserID),
     Posts VARCHAR (255) NOT NULL,
@@ -25,9 +25,10 @@ CREATE TABLE Comments (
     fkUserID int,
     FOREIGN KEY (fkUserID) REFERENCES Users (UserID),
     fkPost int,
-    FOREIGN KEY (fkPost) REFERENCES CreatePosts (CreatePostsID),
+    FOREIGN KEY (fkPost) REFERENCES Posts (CreatePostsID),
     DateCreated DATETIME NOT NULL,
     Comment VARCHAR (255) NOT NULL,
     PRIMARY KEY (CommentsID)
 );
-select * from CreatePosts;
+ 
+select * from Posts;
