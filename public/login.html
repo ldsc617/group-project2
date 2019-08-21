@@ -13,27 +13,25 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <!-- Font Awesome CSS Icons (For cool glyphicons) -->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />-->
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/2ad7f43d56.js"></script>
 </head>
 
 <body>
+    <!-- Image and text -->
+    <nav class="navbar navbar" id="navbar-bg">
+            <a class="navbar-brand" href="/public/index.html">
+                <img src="porK-logo.png" width="240" height="100" class="d-inline-block align-top" id="porkLogo" alt="">
+            </a>
+        </nav>
     <div class="container" id="bg">
-        <div class="container">
-            <div class="row">
-                <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center ">
-                    <header>
-                        <h1>Welcome to PorK!</h1>
-                        <h3> Enter your information to log in below!</h3>
-                        <br><h5>New to the Site?<br> No Problem!<br><br>Just click the link below to create your own account!</h5>
-                    </header>
-                </div>
-            </div>
-        </div>
+        
 
         <div class="container">
             <div class="row">
                 <div class="card mainBox m-3 p-2 col col-lg-12">
                     <div class="card-header m-1 text-secondary font-weight-bold">Log In!</div>
-                    <div class="card-body m-3 p-2 col col-lg-12">
+                    <div class="card-body text-secondary">
                         <form action="/compare/users" method="POST">
 
                             <label for="username">Username</label>
@@ -42,7 +40,9 @@
                             <label for="password">Password</label>
                             <input type="password" name="password" placeholder="Password"><br><br>
 
-                            <button type="submit">Log In</button>
+                            <button type="submit" class="btn btn-default"
+                            aria-label="Left Align">Log In
+                            <span class="fas fa-bacon"></span></button>
 
                         </form>
 
