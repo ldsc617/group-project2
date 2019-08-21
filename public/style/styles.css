@@ -152,3 +152,10 @@ align-content: center;
 }
 /* == end create user queries == */
     /* ===== End media queries ==== */
+
+
+/* for display none */
+
+#otherSide {
+    display: none;
+}
