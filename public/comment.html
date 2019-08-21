@@ -5,101 +5,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pork Comments</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <title>PorK Create-a-User</title>
+
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <!-- Font Awesome CSS Icons (For cool glyphicons) -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />-->
+
+    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/2ad7f43d56.js"></script>
 </head>
 
 <body>
-    <div class="container" id="bg">
-        <div class="container">
-            <div class="row">
-                <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center ">
-                    <header>
-                        <!--The line below should be changed to include logo and tag line-->
-                        <h1>Welcome to PorK!</h1>
-                    </header>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="card mainBox m-3 p-2 col" id="profile">
-                    <div class="card-header m-1 text-secondary font-weight-bold">
-                        <!--Optional text forcard header displayed below including the current logged in user's name-->
-                        <h1>Hi <span id="name"></span>, Here's the Question you selected.</h1>
-                    </div>
-                    <div id="questionHere" class="card-body">
-                        <!--This section should display the post the user would
-                            like to see the comments on-->
+    <nav class="navbar navbar" id="navbar-bg">
+        <a class="navbar-brand" href="/">
+            <img src="porK-logo.png" width="240" height="100" class="d-inline-block align-top" id="porkLogo" alt="">
+        </a>
+    </nav>
+        <div class="container" id="bg">
+            <div class="container">
+                <div class="row">
+                    <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center " id="dark2">
+                        <header>
+                            <!--The line below should be changed to include logo and tag line-->
+                            <h1>Welcome to PorK!</h1>
+                        </header>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="card mainBox m-3 p-2 col" id="profile">
-                    <div class="card-header m-1 text-secondary font-weight-bold">
-                        <!--Optional text for card header displayed below-->
-                        <h1> Here's the comments on the above Question you selected.</h1>
+    
+            <div class="container">
+                <div class="row">
+                    <div class="card mainBox m-3 p-2 col" id="profile">
+                        <div class="card-header m-1 font-weight-bold">
+                            <!--Optional text forcard header displayed below including the current logged in user's name-->
+                            <h2>Hi <span id="name"></span>, Here's the Question you selected.</h2>
+                        </div>
+                        <div id="questionHere" class="card-body">
+                            <!--This section should display the post the user would
+                                like to see the comments on-->
+                        </div>
                     </div>
-
-                    <div id="allComments" class="card-body">
-                        <!--This section should display the comments all users have 
-                                have posted in regards to the above question-->
-                        <!--Can we have a if no comments found insert "Sorry now comment's yet" or something like that?-->
-                        <div class="container m-3 p-2">
-                            <div class="row">
-                                <label for="comment">Add a Answer/Comment:</label>
-                                <div class="container m-3 p-2">
-                                    <div class="row">
-                                        <input id="userInput" type="text" name="comment">
-                                        <button id="postComment">Submit</button>
+                </div>
+            </div>
+    
+            <div class="container">
+                <div class="row">
+                    <div class="card mainBox m-3 p-2 col" id="profile">
+                        <div class="card-header m-1 font-weight-bold">
+                            <!--Optional text for card header displayed below-->
+                            <h2> Here's the comments on the above Question you selected.</h2>
+                        </div>
+    
+                        <div id="allComments" class="card-body">
+                            <!--This section should display the comments all users have 
+                                    have posted in regards to the above question-->
+                            <!--Can we have a if no comments found insert "Sorry now comment's yet" or something like that?-->
+                            <div class="container m-3 p-2">
+                                <div class="row">
+                                    <label for="comment">Add an Answer/Comment:</label>
+                                    <div class="container m-3 p-2">
+                                        <div class="row">
+                                            <input id="userInput" type="text" name="comment">
+                                            <button id="postComment">Submit</button>
+                                        </div>
                                     </div>
+    
                                 </div>
-
                             </div>
-                        </div>
-
-                        <div class="container m-3 p-2">
-                            <div class="row">
-
-                                <button id="toProfile">Click me to return homepage</button>
-
+    
+                            <div class="container m-3 p-2" id=>
+                                <div class="row">
+    
+                                    <button id="toProfile">Click me to return homepage</button>
+    
+                                </div>
+    
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-
-        <!--Log out button below-->
-
-        <div class="container">
-            <div class="row">
-                <div class="card mainBox m-3 p-2 col col-lg-12">
-                    <div class="card-header m-3 p-2">
-                        <button id="logout">Logout</button>
+    
+    
+    
+    
+            <!--Log out button below-->
+    
+            <div class="container">
+                <div class="row">
+                    <div class="card mainBox m-3 p-2 col col-lg-12" id="dark2">
+                        <div class="card-header m-3 p-2">
+                            <button id="logout">Logout</button>
+                        </div>
                     </div>
                 </div>
             </div>
+    
         </div>
-
-    </div>
-
 
 
     <script>
