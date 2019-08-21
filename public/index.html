@@ -15,7 +15,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <!-- Font Awesome CSS Icons (For cool glyphicons) -->
 
-    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->    
+    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/2ad7f43d56.js"></script>
 </head>
@@ -23,134 +23,131 @@
 <body>
     <!-- Image and text -->
     <nav class="navbar navbar" id="navbar-bg">
-            <a class="navbar-brand" href="/public/index.html">
-              <img src="porK-logo.png" width="240" height="100" class="d-inline-block align-top" id="porkLogo" alt="">
-            </a>
-          </nav>
-        <div class="container" id="bg">
-            <div class="container">
-                <div class="row">
-                    </div>
-                </div>
-            </div>
-
-
-        <!-- So far everything on this page is contained in one card. Should this be changed?? -->
-        <div class="container">
-            <div class="row">
-
-                <div class="card mainBox col" id="profile">
-                    <div class="card-header m-1 text-secondary font-weight-bold">
-                        <h3><i>porK</i> away!</h3>
-                        <p>Ask your question below</p>
-                    </div>
-                    <div class="card-body">
-                        <h5>Type in your question Below to ask the community a question!</h5>
-                        <!--Should we display a dummy question in the box that will clear as soon as the user begings typing?
+        <a class="navbar-brand" href="/public/index.html">
+            <img src="porK-logo.png" width="240" height="100" class="d-inline-block align-top" id="porkLogo" alt="">
+        </a>
+    </nav>
+    <div class="container" id="bg">
+        <div class="row">
+            <div class="container" >
+                <div class="row" >
+                        <!-- So far everything on this page is contained in one card. Should this be changed?? -->
+                    <div class="card mainBox m-3 p-2 col"id="profile">
+                        <div class="card-header m-1 text-secondary font-weight-bold">
+                            <h3><i>porK</i> away!</h3>
+                            <p>Ask your question below</p>
+                        </div>
+                        <div class="card-body text-dark">
+                            <h5>Type in your question Below to ask the community a question!</h5>
+                            <!--Should we display a dummy question in the box that will clear as soon as the user begings typing?
                         or is ther a way to make this a bigger text box?-->
-                        <input type="text" id="question" placeholder="Why do you bake cookies, but cook bacon?">
-                        <h5>Now select the category and your done!</h5>
+                            <input type="text" id="question" placeholder="Why do you bake cookies, but cook bacon?">
+                            <h5>Now select the category and your done!</h5>
 
-                        <div class="container">
-                            <div class="row">
-                                <select id="cat">
-                                    <option value="0">Select a Category</option>
-                                    <option value="1">Entertainment</option>
-                                    <option value="2">Advice</option>
-                                    <option value="3">Educational</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="container">
-                            <div class="row">
-                                    <button id="sendQuestion" type="button" class="btn btn-default" aria-label="Left Align">Get Cookin'
-                                            <span class="fas fa-bacon"></span>
-                                            </button>
-
-
-                            </div>
-                        </div>
-                        <p id="err"></p><br>
-
-                        <div class="container" id="myQuestions">
-                            <div class="row">
-                                <h5>Here are the questions you've asked so far.</h5>
-                            </div>
                             <div class="container">
-
                                 <div class="row">
-                                    <h6>
-                                        <section id="display"></section>
-                                    </h6>
+                                    <select id="cat">
+                                        <option value="0">Select a Category</option>
+                                        <option value="1">Entertainment</option>
+                                        <option value="2">Advice</option>
+                                        <option value="3">Educational</option>
+                                    </select>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                  
-                    <div class="container m-3 p-2">
-                        <div class="row">
-                            <button class="btn btn-default" id="others">Click Me to See Other PorKer's
-                                Questions</button>
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row" id="otherSide">
-                <div class="card mainBox m-3 p-2 col">
-                    <div class="card-header m-1 text-secondary font-weight-bold">
-                        <!--Optional text for card header displayed below-->
-                        <h3> Here's all the Questions in this Category from other Users.</h3>
-                    </div>
-                    <!--Does this change Catagories change the view of 
-                        the questions the user has asked???-->
-
-                  <div class="card-body">
-                    <div class="container m-3 p-2">
-                        <div class="row">
-                            <h5>Change Categories:</h5>
-                            <select id="catChange" class="m-1 p-3">
-                                <option value="0">Select a Category</option>
-                                <option value="1">Entertainment</option>
-                                <option value="2">Advice</option>
-                                <option value="3">Educational</option>
-                            </select>
 
                             <div class="container">
-
                                 <div class="row">
-                                    <button id="change">Change Category</button>
+                                    <button id="sendQuestion" type="button" class="btn btn-default"
+                                        aria-label="Left Align">Get
+                                        Cookin'
+                                        <span class="fas fa-bacon"></span>
+                                    </button>
+
 
                                 </div>
                             </div>
-                        </div>
+                            <p id="err"></p><br>
 
+                            <div class="container" id="myQuestions">
+                                <div class="row">
+                                    <h5>Here are the questions you've asked so far.</h5>
+                                </div>
+                                <div class="container">
 
-
-                    <div class="container m-3 p-2">
-
-                        <div class="row">
-                            <h5>Here are the newest questions on PorK!<br> Click on a Question to add an answer/comment!</h5>
-
+                                    <div class="row">
+                                        <h6>
+                                            <section id="display"></section>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="container m-3 p-2">
                             <div class="row">
-                                <section id="otherQuestions"></section>
+                                <button class="btn btn-default" id="others">Click Me to See Other PorKer's
+                                    Questions</button>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row" >
+                    <div class="card mainBox m-3 p-2 col " id="otherSide">
+                        <div class="card-header m-1 text-secondary font-weight-bold">
+                            <!--Optional text for card header displayed below-->
+                            <h3> Here's all the Questions in this Category from other Users.</h3>
+                        </div>
+                        <!--Does this change Catagories change the view of 
+                            the questions the user has asked???-->
+
+                        <div class="card-body text-dark">
+                            <div class="container m-3 p-2">
+                                <div class="row">
+                                    <h5>Change Categories:</h5>
+                                    <select id="catChange" class="m-1 p-3">
+                                        <option value="0">Select a Category</option>
+                                        <option value="1">Entertainment</option>
+                                        <option value="2">Advice</option>
+                                        <option value="3">Educational</option>
+                                    </select>
+
+                                    <div class="container">
+
+                                        <div class="row">
+                                            <button class="btn btn-default" id="change">Change Category</button>
+
+                                        </div>
+                                    </div>
+                                </div>
 
 
-                        <div class="container m-1 p-3">
-                            <div class="row">
-                                <button class="btn btn-default" id="toProfile">Click me to return
-                                    homepage</button><br>
+
+                                <div class="container m-3 p-2">
+
+                                    <div class="row">
+                                        <h5>Here are the newest questions on PorK!<br> Click on a Question to add an
+                                            answer/comment!</h5>
+
+                                    </div>
+
+                                    <div class="container m-3 p-2">
+                                        <div class="row">
+                                            <section id="otherQuestions"></section>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="container m-1 p-3">
+                                        <div class="row">
+                                            <button class="btn btn-default" id="toProfile">Click me to return
+                                                homepage</button><br>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -158,14 +155,13 @@
                 </div>
             </div>
         </div>
-
 
         <div class="container">
             <div class="row">
 
                 <div class="card mainBox m-3 p-2 col col-lg-12">
                     <div class="card-header m-3 p-2">
-                        <button class="btn-block btn-lg btn-secondary" id="logout">Logout</button>
+                        <button class="btn-block btn btn-lg btn-default" id="logout">Logout</button>
 
                     </div>
                 </div>
