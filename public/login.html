@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PorK Log-In</title>
+    <link rel="stylesheet" href="style/comlogstyles.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS CDN -->
@@ -16,10 +17,17 @@
 </head>
 
 <body>
+
+<nav class="navbar navbar" id="navbar-bg">
+    <a class="navbar-brand" href="/public/index.html">
+        <img src="/public/style/img/porK-logo.png" width="240" height="100" class="d-inline-block align-top"
+            id="porkLogo" alt="">
+    </a>
+</nav>
     <div class="container" id="bg">
         <div class="container">
             <div class="row">
-                <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center ">
+                <div class="jumbotron topBox m-3 p-2 col col-md-6 col-lg-12 text-center" id="dark2">
                     <header>
                         <h1>Welcome to PorK!</h1>
                         <h3> Enter your information to log in below!</h3>
@@ -31,8 +39,8 @@
 
         <div class="container">
             <div class="row">
-                <div class="card mainBox m-3 p-2 col col-lg-12">
-                    <div class="card-header m-1 text-secondary font-weight-bold">Log In!</div>
+                <div class="card mainBox m-3 p-2 col col-lg-12" id="dark2">
+                    <div class="card-header m-1 font-weight-bold">Log In!</div>
                     <div class="card-body m-3 p-2 col col-lg-12">
                         <form action="/compare/users" method="POST">
 
@@ -42,7 +50,8 @@
                             <label for="password">Password</label>
                             <input type="password" name="password" placeholder="Password"><br><br>
 
-                            <button type="submit">Log In</button>
+                            <button type="submit" id="login">Log In</button>
+                            </form>
 
                         </form>
 
@@ -53,7 +62,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="card mainBox m-3 p-2 col col-lg-12">
+                <div class="card mainBox m-3 p-2 col col-lg-12" id="dark2">
                     <div class="card-header m-3 p-2">
                         
                         <a href="/register">Click Here to Create an Account</a>

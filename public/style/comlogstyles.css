@@ -1,0 +1,34 @@
+/* comments and login pages */
+
+body, html {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	line-height: 26px;
+	background:url('/public/style/img/bg_2.jpg') 50% 0 repeat-y;
+	background-position:center 0;
+	width:100%;
+	height:100%;
+	overflow-x:hidden;
+	background-repeat: repeat;
+}
+
+#postComment, #toProfile, #logout, #login {
+    background-color: #4B4073;
+    color: white;
+
+}
+
+#navbar-bg {
+    background: rgba(8,48,64, 0.4);
+    margin-bottom:2%;
+}
+
+
+#dark2, #profile {
+    background: rgba(0,0,0, 0.2);
+    color: aliceblue;
+}
+
+header {
+    color: white;
+}
