@@ -159,3 +159,8 @@ align-content: center;
 #otherSide {
     display: none;
 }
+
+#otherSide, #profile, #footerthing, #dark3 {
+    background: rgba(0,0,0, 0.2);
+    color: aliceblue;
+}

@@ -30,6 +30,6 @@ module.exports = function(app) {
     if (!req.session.user) {
       return res.redirect("/login");
     }
-    res.sendFile(path.join(__dirname, "../public/comment.html")); //("create")
+    res.sendFile(path.join(__dirname, "../public/comment.html")); //("comment")
   });
 };
