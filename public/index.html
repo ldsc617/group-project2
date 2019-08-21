@@ -28,73 +28,73 @@
         </a>
     </nav>
     <div class="container" id="bg">
-        <div class="row">
-            <div class="container" >
-                <div class="row" >
-                        <!-- So far everything on this page is contained in one card. Should this be changed?? -->
-                    <div class="card mainBox m-3 p-2 col"id="profile">
-                        <div class="card-header m-1 text-secondary font-weight-bold">
-                            <h3><i>porK</i> away!</h3>
-                            <p>Ask your question below</p>
-                        </div>
-                        <div class="card-body text-dark">
-                            <h5>Type in your question Below to ask the community a question!</h5>
-                            <!--Should we display a dummy question in the box that will clear as soon as the user begings typing?
+
+        <div class="container">
+            <div class="row">
+                <!-- So far everything on this page is contained in one card. Should this be changed?? -->
+                <div class="card mainBox m-3 p-2 col" id="profile">
+                    <div class="card-header m-1 text-secondary font-weight-bold">
+                        <h3><i>porK</i> away!</h3>
+                        <p>Ask your question below</p>
+                    </div>
+                    <div class="card-body text-secondary">
+                        <h5>Type in your question Below to ask the community a question!</h5>
+                        <!--Should we display a dummy question in the box that will clear as soon as the user begings typing?
                         or is ther a way to make this a bigger text box?-->
-                            <input type="text" id="question" placeholder="Why do you bake cookies, but cook bacon?">
-                            <h5>Now select the category and your done!</h5>
+                        <input type="text" id="question" placeholder="Why do you bake cookies, but cook bacon?">
+                        <h5>Now select the category and your done!</h5>
 
-                            <div class="container">
-                                <div class="row">
-                                    <select id="cat">
-                                        <option value="0">Select a Category</option>
-                                        <option value="1">Entertainment</option>
-                                        <option value="2">Advice</option>
-                                        <option value="3">Educational</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="container">
-                                <div class="row">
-                                    <button id="sendQuestion" type="button" class="btn btn-default"
-                                        aria-label="Left Align">Get
-                                        Cookin'
-                                        <span class="fas fa-bacon"></span>
-                                    </button>
-
-
-                                </div>
-                            </div>
-                            <p id="err"></p><br>
-
-                            <div class="container" id="myQuestions">
-                                <div class="row">
-                                    <h5>Here are the questions you've asked so far.</h5>
-                                </div>
-                                <div class="container">
-
-                                    <div class="row">
-                                        <h6>
-                                            <section id="display"></section>
-                                        </h6>
-                                    </div>
-                                </div>
+                        <div class="container">
+                            <div class="row">
+                                <select id="cat">
+                                    <option value="0">Select a Category</option>
+                                    <option value="1">Entertainment</option>
+                                    <option value="2">Advice</option>
+                                    <option value="3">Educational</option>
+                                </select>
                             </div>
                         </div>
 
-                        <div class="container m-3 p-2">
+                        <div class="container">
                             <div class="row">
-                                <button class="btn btn-default" id="others">Click Me to See Other PorKer's
-                                    Questions</button>
+                                <button id="sendQuestion" type="button" class="btn btn-default"
+                                    aria-label="Left Align">Get
+                                    Cookin'
+                                    <span class="fas fa-bacon"></span>
+                                </button>
+
+
+                            </div>
+                        </div>
+                        <p id="err"></p><br>
+
+                        <div class="container" id="myQuestions">
+                            <div class="row">
+                                <h5>Here are the questions you've asked so far.</h5>
+                            </div>
+                            <div class="container">
+
+                                <div class="row">
+                                    <h6>
+                                        <section id="display"></section>
+                                    </h6>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="container m-3 p-2">
+                        <div class="row">
+                            <button class="btn btn-default" id="others">Click Me to See Other PorKer's
+                                Questions</button>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
             <div class="container">
-                <div class="row" >
+                <div class="row">
                     <div class="card mainBox m-3 p-2 col " id="otherSide">
                         <div class="card-header m-1 text-secondary font-weight-bold">
                             <!--Optional text for card header displayed below-->
@@ -142,8 +142,9 @@
 
                                     <div class="container m-1 p-3">
                                         <div class="row">
-                                            <button class="btn btn-default" id="toProfile">Click me to Jump to enter a Question
-                                                </button><br>
+                                            <button class="btn btn-default" id="toProfile">Click me to Jump to enter a
+                                                Question
+                                            </button><br>
                                         </div>
                                     </div>
                                 </div>
