@@ -19,10 +19,18 @@ app.get("/index.js", function(req, res) {
 
 // app.get("/comment.js", function(req, res) {
 //   res.sendFile(path.join(__dirname, "/public/js/comment.js"));
-// });
+// }); '/public/style/img/bg_2.jpg'
+
+app.get("/porK-logo.png", function(req, res){
+  res.sendFile(path.join(__dirname, "/public/style/img/porK-logo.png"));
+})
+
+app.get("/bg_2.jpg", function(req, res){
+  res.sendFile(path.join(__dirname, "/public/style/img/bg_2.jpg"));
+})
 
 app.get("/styles.css", function(req, res) {
-  res.sendFile(path.join(__dirname, "/public/styles/styles.css"));
+  res.sendFile(path.join(__dirname, "/public/style/styles.css"));
 });
 
 // for express to use session
