@@ -1,0 +1,154 @@
+
+/* ==== Global styling for all pages ==== */
+body, html {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	line-height: 26px;
+	color: rgba(255, 255, 255, 0.7);
+	background:url('bg_2.jpg') 50% 0 repeat-y;
+	background-position:center 0;
+	width:100%;
+	height:100%;
+	overflow-x:hidden;
+	background-repeat: repeat;
+}
+
+/* ==== Stlying for index ====  */
+
+
+/* ==== End index styling =====*/
+
+/* =========user creation page styling============ */
+.login-bg {
+    background: rgba(0,0,0, 0.2);
+    color: aliceblue;
+    margin-bottom: 2%;
+    max-width: 80%;
+    margin: auto;
+}
+
+#returnBtn{
+    /* margin-top: 2%; */
+}
+
+.btn{
+    background-color:#292845;
+    color: aliceblue;
+}
+
+#navbar-bg {
+    background: rgba(8,48,64, 0.4);
+    margin-bottom:2%;
+}
+
+.logbtns{
+    /* padding-left: 20%; */
+}
+
+.btn {
+    /* margin-bottom: 5%; */
+}
+
+.returnBtn{
+
+}
+
+.boxTitleTxt{
+display: block;
+align-content: center;
+}
+
+ input{
+    width: 100%;
+}
+
+#newLoginBox {
+    padding: 2%;
+}
+
+/* ======== End user creation specific styling ========= */
+
+
+/* ====== media queries for all responsive pages ===== */
+
+@media screen and (min-width: 320px){
+/* == index queries ==  */
+
+/* == end index queries == */
+
+/* ================================== */
+
+/* == create user queries == */
+.logbtns{
+    margin-left: 5%;
+}
+#porkLogo{
+    margin-left: 10%;
+}
+#createBtn{
+    margin-left: 8%;
+}
+#returnBtn{
+    margin-top: 2%;
+}
+/* end create users queries */
+}
+
+@media screen and (min-width: 480px){
+/* == index queries == */
+/* == end index queries  */
+
+/* ============================ */
+
+/* == create user queries == */
+.logbtns{
+    margin-left: 25%;
+}
+#porkLogo{
+    margin-left: 45%;
+}
+#createBtn{
+    margin-left: 8%;
+}
+#returnBtn{
+    margin-top: 2%;
+}
+/* == end create user queries == */
+
+    }
+
+@media screen and (min-width: 768px){
+/* == index queries == */
+/* == end index queries == */
+
+/* ================================ */
+
+/* == create user queries == */
+#returnBtn{
+    margin: 0 auto;
+}
+#porkLogo{
+    margin-left: 100%;
+}
+.logbtns{
+    margin-left: 10%;
+}
+}
+/* == end create user queries == */
+
+@media screen and (min-width: 992px){
+/* == index queries == */
+/* == end index queries == */
+
+/* ==================================== */
+
+/* == create user queries ==  */
+#returnBtn{
+    margin: 0 auto;
+}
+.logbtns{
+    margin-left: 25%;
+}
+}
+/* == end create user queries == */
+    /* ===== End media queries ==== */
