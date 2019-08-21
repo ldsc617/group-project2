@@ -38,16 +38,16 @@
 
                         <form action="/create/account" method="POST">
                             
-                            <label for="name" class="boxTitleTxt">Your Name</label>
-                            <input type="text" name="name" placeholder="Name*" required ><br><br>
+                            <label for="name" class="boxTitleTxt">Your Name*</label>
+                            <input type="text" name="name" placeholder="Name" required ><br><br>
 
-                            <label for="username"class="boxTitleTxt" >Pick a username</label>
-                            <input type="text" name="Username" placeholder="Username*" required><br><br>
-                            <label for="password1" class="boxTitleTxt">Choose Your Password</label>
-                            <input type="password" name="password1" placeholder="Password*" required><br><br>
+                            <label for="username"class="boxTitleTxt" >Pick a username*</label>
+                            <input type="text" name="Username" placeholder="Username" required><br><br>
+                            <label for="password1" class="boxTitleTxt">Choose Your Password*</label>
+                            <input type="password" name="password1" placeholder="Password" required><br><br>
 
-                            <label for="password2" class="boxTitleTxt">Confrm Password</label>
-                            <input type="password" name="password2" placeholder="Confirm*" required><br><br>
+                            <label for="password2" class="boxTitleTxt">Confrm Password*</label>
+                            <input type="password" name="password2" placeholder="Confirm" required><br><br>
 
                             <div class="logbtns">
                                     <button type="submit" class="btn btn-dark" id="createBtn">Create Account</button>
@@ -62,8 +62,6 @@
             </div>
             
         </div>
-        
-    </div>
     <script>
 
         $.get("/check/errors", (res) => {

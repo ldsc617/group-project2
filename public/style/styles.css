@@ -27,10 +27,6 @@ body, html {
     margin: auto;
 }
 
-#returnBtn{
-    /* margin-top: 2%; */
-}
-
 .btn{
     background-color:#292845;
     color: aliceblue;
@@ -39,18 +35,6 @@ body, html {
 #navbar-bg {
     background: rgba(8,48,64, 0.4);
     margin-bottom:2%;
-}
-
-.logbtns{
-    /* padding-left: 20%; */
-}
-
-.btn {
-    /* margin-bottom: 5%; */
-}
-
-.returnBtn{
-
 }
 
 .boxTitleTxt{
@@ -70,6 +54,9 @@ align-content: center;
 
 
 /* ====== media queries for all responsive pages ===== */
+            /* each media queries section contains
+            individual media queries for each page
+            each separated with ============== */
 
 @media screen and (min-width: 320px){
 /* == index queries ==  */
@@ -92,13 +79,52 @@ align-content: center;
     margin-top: 2%;
 }
 /* end create users queries */
+/* ==============================  */
+
+/* == login queries == */
+#loginBtn{
+    margin-left: 8%;
+}
+.fieldText{
+    text-align: center;
+    margin-top: 5%;
+}
+#cat{
+    margin-left: 16%;
+}
+#cook-submit{
+    margin-left: 20%;
+}
+.indexBtns{
+    margin-top: 5%;
+}
+.loginPageBtns {
+    margin-bottom: 2%;
+    margin-right: 100%;
+    clear: both;
+}
+.toProfileBtn{
+    width: 100%;
+    margin-top: 2%
+}
+.card-body{
+    padding: 0;
+}
+#newestQuest{
+    margin-top: 15%;
+}
+#logout{
+    margin-left: 20%;
+}
+/* == end login queries ==*/
+/* =============================== */
 }
 
 @media screen and (min-width: 480px){
 /* == index queries == */
 /* == end index queries  */
 
-/* ============================ */
+/* =============================== */
 
 /* == create user queries == */
 .logbtns{
@@ -114,7 +140,18 @@ align-content: center;
     margin-top: 2%;
 }
 /* == end create user queries == */
-
+/* ================================= */
+/* == login queries == */
+#createBtn{
+    margin-left: 8%;
+}
+.loginPageBtns {
+    margin-bottom: 2%;
+    margin-right: 100%;
+    clear: both;
+}
+/* == end login queries ==*/
+/* =============================== */
     }
 
 @media screen and (min-width: 768px){
@@ -133,9 +170,27 @@ align-content: center;
 .logbtns{
     margin-left: 10%;
 }
-}
+
+
 /* == end create user queries == */
 
+/* ================================== */
+
+/* == login queries == */
+#loginBtn{
+    margin-left: 8%;
+}
+.loginPageBtns {
+    margin-bottom: 2%;
+    margin-right: 100%;
+    clear: both;
+}
+/* == end login queries ==*/
+
+/* =============================== */
+
+
+}
 @media screen and (min-width: 992px){
 /* == index queries == */
 /* == end index queries == */
@@ -149,6 +204,26 @@ align-content: center;
 .logbtns{
     margin-left: 25%;
 }
-}
+
 /* == end create user queries == */
-    /* ===== End media queries ==== */
+
+
+/* ======================================= */
+
+
+/* == login queries == */
+.loginPageBtns {
+    margin-right: 100%;
+    clear: both;
+}
+
+#loginBtn{
+    margin-left: 8%;
+}
+
+/* == end login queries ==*/
+
+/* =============================== */
+}
+
+/* ===== End media queries ==== */

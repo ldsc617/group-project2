@@ -5,44 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PorK Log-In</title>
+    <title>porK? Login</title>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <!-- Font Awesome CSS Icons (For cool glyphicons) -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/styles.css">
 </head>
 
 <body>
+    <!-- Image and text -->
+    <nav class="navbar navbar" id="navbar-bg">
+        <a class="navbar-brand" href="/public/index.html">
+          <img src="/public/style/img/porK-logo.png" width="240" height="100" class="d-inline-block align-top" id="porkLogo" alt="">
+        </a>
+      </nav>
     <div class="container" id="bg">
         <div class="container">
             <div class="row">
-                <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center ">
-                    <header>
-                        <h1>Welcome to PorK!</h1>
-                        <h3> Enter your information to log in below!</h3>
-                        <br><h5>New to the Site?<br> No Problem!<br><br>Just click the link below to create your own account!</h5>
-                    </header>
                 </div>
             </div>
         </div>
 
         <div class="container">
             <div class="row">
-                <div class="card mainBox m-3 p-2 col col-lg-12">
+                <div class="card mainBox col col-lg-12 col-xs-12 login-bg">
+                    <div class="card-header text-secondary font-weight-bold">Create your Account!</div>
+                    <div class="card-body  col col-lg-12">
+
+                        <form action="/compare/users" method="POST">
+
+                            <label for="username"class="boxTitleTxt" >Username*</label>
+                            <input type="text" name="Username" placeholder="Username" required><br><br>
+                            <label for="password1" class="boxTitleTxt">Password*</label>
+                            <input type="password" name="password1" placeholder="Password" required><br><br>
+
+                            <div class="loginPageBtns">
+                                    <button type="submit" class="btn btn-dark" id="loginBtn">Login</button>
+                            </div>
+                            <div class="loginPageBtns" id="loginBtnCreate">
+                                <button class="btn logbtns" id="createAccBtn" onclick="window.location.href = '/register';">Sign up</button>
+                            </div>
+                        </form>
+                        <p id="err"></p><br>
+                        <!--Can we add an account has been created confirmation??-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="container">
+            <div class="row">
+                <div class="card mainBox col col-lg-12 col-xs-12 login-bg">
                     <div class="card-header m-1 text-secondary font-weight-bold">Log In!</div>
                     <div class="card-body m-3 p-2 col col-lg-12">
                         <form action="/compare/users" method="POST">
 
-                            <label for="username">Username</label>
-                            <input type="text" name="username" placeholder="Username"><br><br>
+                            <label for="username" class="boxTitleTxt">Username</label>
+                            <input type="text" name="username" placeholder="Username*" class="boxTitleTxt"><br><br>
 
-                            <label for="password">Password</label>
-                            <input type="password" name="password" placeholder="Password"><br><br>
+                            <label for="password" class="boxTitleTxt">Password</label>
+                            <input type="password" name="password" placeholder="Password*"><br><br>
 
-                            <button type="submit">Log In</button>
+                            <button type="submit" class="btn btn-dark" id="logBtn">Log In</button>
 
                         </form>
 
@@ -50,8 +77,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
+        </div> -->
+        <!-- <div class="container">
             <div class="row">
                 <div class="card mainBox m-3 p-2 col col-lg-12">
                     <div class="card-header m-3 p-2">
@@ -60,7 +87,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <script>
