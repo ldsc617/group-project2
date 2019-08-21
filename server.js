@@ -33,6 +33,10 @@ app.get("/styles.css", function(req, res) {
   res.sendFile(path.join(__dirname, "/public/style/styles.css"));
 });
 
+app.get("/comlogstyles.css", function(req, res) {
+  res.sendFile(path.join(__dirname, "/public/style/comlogstyles.css"));
+});
+
 // for express to use session
 app.use(
   session({
