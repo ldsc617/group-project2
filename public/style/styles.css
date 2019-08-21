@@ -160,7 +160,7 @@ align-content: center;
     display: none;
 }
 
-#otherSide, #profile, #footerthing {
+#otherSide, #profile, #footerthing, #dark3 {
     background: rgba(0,0,0, 0.2);
     color: aliceblue;
 }
