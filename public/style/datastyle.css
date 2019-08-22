@@ -27,6 +27,9 @@ body, html {
     margin: auto;
 }
 
+.text{
+    color: white;
+}
 #returnBtn{
     /* margin-top: 2%; */
 }
@@ -161,6 +164,6 @@ align-content: center;
 }
 
 #otherSide, #profile, #footerthing, #dark3 {
-    background: rgba(0,0,0, 0.2);
+    background: rgba(0,0,0, 0.8);
     color: aliceblue;
 }
