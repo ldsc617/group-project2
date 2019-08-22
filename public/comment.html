@@ -27,23 +27,14 @@
         </a>
     </nav>
         <div class="container" id="bg">
-            <div class="container">
-                <div class="row">
-                    <div class="jumbotron topBox m-3 p-2 text-secondary col col-md-6 col-lg-12 text-center " id="dark2">
-                        <header>
-                            <!--The line below should be changed to include logo and tag line-->
-                            <h1>Welcome to PorK!</h1>
-                        </header>
-                    </div>
-                </div>
-            </div>
     
             <div class="container">
                 <div class="row">
                     <div class="card mainBox m-3 p-2 col" id="profile">
                         <div class="card-header m-1 font-weight-bold">
                             <!--Optional text forcard header displayed below including the current logged in user's name-->
-                            <h2>Hi <span id="name"></span>, Here's the Question you selected.</h2>
+                            <!--  <span id="name"></span> this currently doesnt work-->
+                            <h2> Here are the Questions in the Category you selected.</h2>
                         </div>
                         <div id="questionHere" class="card-body">
                             <!--This section should display the post the user would
@@ -71,7 +62,7 @@
                                     <div class="container m-3 p-2">
                                         <div class="row">
                                             <input id="userInput" type="text" name="comment">
-                                            <button id="postComment">Submit</button>
+                                            <button class=" btn btn-default" id="postComment">Submit</button>
                                         </div>
                                     </div>
     
@@ -81,7 +72,7 @@
                             <div class="container m-3 p-2" id=>
                                 <div class="row">
     
-                                    <button id="toProfile">Click me to return homepage</button>
+                                    <button class="btn btn-default" id="toProfile">Click me to return homepage</button>
     
                                 </div>
     
@@ -100,7 +91,7 @@
                 <div class="row">
                     <div class="card mainBox m-3 p-2 col col-lg-12" id="dark3">
                         <div class="card-header m-3 p-2">
-                            <button id="logout">Logout</button>
+                            <button class="btn btn-default" id="logout">Logout</button>
                         </div>
                     </div>
                 </div>
