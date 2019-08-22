@@ -1,93 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<meta charset="utf-8">
+<style>
+body{
+    width:1060px;
+    margin:50px auto;
+}
+path {  stroke: #fff; }
+path:hover {  opacity:0.9; }
+rect:hover {  fill:blue; }
+.axis {  font: 10px sans-serif; }
+.legend tr{    border-bottom:1px solid grey; }
+.legend tr:first-child{    border-top:1px solid grey; }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PorK Admin</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-    <!-- Font Awesome CSS Icons (For cool glyphicons) -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />-->
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/2ad7f43d56.js"></script>
-    <!-- STYLING  -->
-    <style>
-        body{
-            width:1060px;
-            margin:50px auto;
-        }
-        path {  stroke: #fff; }
-        path:hover {  opacity:0.9; }
-        rect:hover {  fill:blue; }
-        .axis {  font: 10px sans-serif; }
-        .legend tr{    border-bottom:1px solid grey; }
-        .legend tr:first-child{    border-top:1px solid grey; }
-        
-        .axis path,
-        .axis line {
-          fill: none;
-          stroke: white;
-          shape-rendering: crispEdges;
-        }
-        
-        .x.axis path {  display: none; }
-        .legend{
-            margin-bottom:76px;
-            display:inline-block;
-            border-collapse: collapse;
-            border-spacing: 0px;
-        }
-        .legend td{
-            padding:4px 5px;
-            vertical-align:bottom;
-        }
-        .legendFreq, .legendPerc{
-            align-content:right;
-            width:50px;
-        }
-        
-        </style>
-</head>
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
+.x.axis path {  display: none; }
+.legend{
+    margin-bottom:76px;
+    display:inline-block;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+.legend td{
+    padding:4px 5px;
+    vertical-align:bottom;
+}
+.legendFreq, .legendPerc{
+    align:right;
+    width:50px;
+}
+
+</style>
 <body>
-    <!-- Image and text -->
-    <nav class="navbar navbar" id="navbar-bg">
-            <a class="navbar-brand" href="/public/index.html">
-                <img src="porK-logo.png" width="240" height="100" class="d-inline-block align-top" id="porkLogo" alt="">
-            </a>
-        </nav>
-    <div class="container" id="bg">
-
-        <div class="container">
-            <div class="row">
-                <div id="footerthing" class="card mainBox m-3 p-2 col col-lg-12">
-                    <div class="card-header m-1 font-weight-bold">Data!</div>
-                    <div class="card-body">
-                        <!-- enter the data from d3 here-->
-                        <div id='dashboard'>
-                        <p id="err"></p><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div id="footerthing" class="card mainBox m-3 p-2 col col-lg-12">
-                    <div class="card-header m-3 p-2">
-                        <button class="btn-block btn btn-lg btn-default" id="returnHome">Return</button>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</body>
+<div id='dashboard'>
+</div>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
 function dashboard(id, fData){
@@ -304,5 +255,3 @@ var freqData=[
 
 dashboard('#dashboard',freqData);
 </script>
-
-</html>
