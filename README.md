@@ -20,7 +20,7 @@ To run the application locally  please follow the steps below:
 
 
 <h3>Using the Site!</h3>
-When the application is loaded you will be taken to the Log-in page. From here there are two options, you can either log in or click on the link on the page to create an account. Once you have created an account and have logged in, you will be taken to the Home page where the User will be allowed to Post a new Question, See comments on Questions that have already been asked, and have the option to click to reveal other User's questions. If any specific question is clicken on, the user will be taken to a comment's page where other User's comments can be viewed on a question and a new comment/answer can be added.
+When the application is loaded you will be taken to the Log-in page. From here there are two options, you can either log in or click on the link on the page to create an account. Once you have created an account and have logged in, you will be taken to the Home page where the User will be allowed to Post a new Question, See comments on Questions that have already been asked, and have the option to click to reveal other User's questions. If any specific question is clicked on, the user will be taken to a comment's page where other User's comments can be viewed on a question and a new comment/answer can be added.
 
 
 
