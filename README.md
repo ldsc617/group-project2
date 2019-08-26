@@ -1,9 +1,9 @@
 # group-project2
-Group Project2
+## PorK
 
 
 <h1>Description</h1>
-This project is a simple site designed to allow User's to ask and answer questions of other user's. 
+This project is a simple site designed to allow User's to post questions and answer questions of other user's. 
 
 
 <h2>Set up</h2>
@@ -34,7 +34,7 @@ This page was built with the following NPM Modules, and technologies:
 
 * [path](https://www.npmjs.com/package/path)
 
-* []()
+* [BootStrap](https://getbootstrap.com/)
 
 * [MySql](https://www.mysql.com/)
 
@@ -50,7 +50,7 @@ This page was built with the following NPM Modules, and technologies:
 
 
 
-For comments/ concerns Contact the project 
+# For comments/ concerns Contact the project 
 Authors: 
 armjim14 
 ldsc617
@@ -58,4 +58,3 @@ CodesByMo
 Cmoconnor0823
 
 
-At: 
